@@ -9,70 +9,178 @@
 <body>
 
   <div class="market-wrapper">
+    <!-- Header & Concept Intro -->
     <header>
       <h1>🌾 AgriTwin Smart Marketplace</h1>
-      <p>AI-powered crop listing, fair price estimation, quality grading, and automated buyer matching from your farm data.</p>
+      <p class="subtitle">Your farm produce. Your market. Your best selling decision.</p>
+      <div class="intro-box">
+        <p><strong>Apni fasal, quantity aur location ki details enter karein.</strong> AgriTwin aapko estimated market price, recommended selling price, market trend, expected revenue aur estimated profit batayega. Analysis ke baad aap apni produce ko marketplace par buyers ke liye list kar sakte hain.</p>
+      </div>
     </header>
+
+    <!-- Visual Step Indicator -->
+    <div class="step-indicator">
+      <span class="step active">1. Add Produce</span> &rarr; 
+      <span class="step">2. Analyze AI</span> &rarr; 
+      <span class="step">3. Best Price & Profit</span> &rarr; 
+      <span class="step">4. List & Sell</span>
+    </div>
 
     <div class="market-grid">
       
-      <!-- LEFT COLUMN: Farmer Input -->
+      <!-- SECTION 1: MY FARM PRODUCE FORM -->
       <div class="card">
-        <h3>📦 List Your Farm Produce</h3>
-        
-        <div class="form-group">
-          <label>Select Crop / Produce from Field</label>
-          <select id="produceType">
-            <option>🥭 Alphonso Mango</option>
-            <option>🍅 Organic Tomato</option>
-            <option>🌾 Sharbati Wheat</option>
-            <option>🥔 Fresh Potato</option>
-            <option>🍎 Kinnaur Apple</option>
-          </select>
-        </div>
+        <h3>🌱 1. What do you want to sell?</h3>
+        <form id="produceForm" onsubmit="event.preventDefault(); runProduceAnalysis();">
+          
+          <div class="form-group">
+            <label>Product / Crop Name</label>
+            <input type="text" id="cropName" placeholder="e.g., Tomato, Mango, Wheat..." required>
+            <span class="helper-text">Fruits, Vegetables, Grains, Pulses, Seeds, or custom produce</span>
+          </div>
 
-        <div class="form-group">
-          <label>Harvest Quantity (kg)</label>
-          <input type="number" id="produceQty" placeholder="e.g., 500">
-        </div>
+          <div class="form-group">
+            <label>Variety (Optional)</label>
+            <input type="text" id="cropVariety" placeholder="e.g., Alphonso, Sharbati, Hybrid">
+          </div>
 
-        <div class="form-group">
-          <label>Your Expected Price (₹ per kg)</label>
-          <input type="number" id="expectedPrice" placeholder="e.g., 60">
-        </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Available Quantity</label>
+              <input type="number" id="cropQty" placeholder="e.g., 500" required>
+              <span class="helper-text">Kitni fasal bechne ke liye available hai?</span>
+            </div>
+            <div class="form-group">
+              <label>Unit</label>
+              <select id="cropUnit">
+                <option value="kg">kg</option>
+                <option value="quintal">quintal</option>
+                <option value="tonne">tonne</option>
+              </select>
+            </div>
+          </div>
 
-        <div class="form-group">
-          <label>Upload Produce Photo (for AI Quality & Freshness Scan)</label>
-          <input type="file" id="producePhoto" style="padding: 8px; background: #0a192f;">
-        </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>State</label>
+              <input type="text" id="cropState" placeholder="e.g., Uttarakhand" required>
+            </div>
+            <div class="form-group">
+              <label>District</label>
+              <input type="text" id="cropDistrict" placeholder="e.g., Dehradun" required>
+            </div>
+          </div>
 
-        <button class="btn-ai" onclick="runMarketAI()">⚡ Run AgriTwin AI Analysis</button>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Quality Grade</label>
+              <select id="cropQuality">
+                <option value="Premium">Premium</option>
+                <option value="Organic">Organic</option>
+                <option value="Good" selected>Good / Grade A</option>
+                <option value="Average">Average</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Your Expected Price (₹/unit)</label>
+              <input type="number" id="expectedPrice" placeholder="e.g., 60">
+              <span class="helper-text">Aap kitne ₹ par bechna chahte hain? (Optional)</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Upload Produce Photo (Optional)</label>
+            <input type="file" id="producePhoto" class="file-input">
+          </div>
+
+          <button type="submit" class="btn-primary">🤖 Analyze My Produce</button>
+        </form>
       </div>
 
-      <!-- RIGHT COLUMN: AI Insights & Best Deals -->
-      <div class="card">
-        <h3>📊 AI Insights & Best Deals</h3>
-        <p style="font-size: 13px; color: #94a3b8;" id="placeholderText">Run the AI analysis to view fair price range, quality grades, and matching buyers for your field produce.</p>
-        
-        <div id="aiResults" class="result-box">
-          <p>🤖 <strong>AI Fair Price Range:</strong> <span id="fairPrice" style="color: #4ade80; font-weight: bold;">₹57 – ₹64 / kg</span> (🟢 Optimal to sell)</p>
-          <p>📈 <strong>Market Trend:</strong> <span id="trendText">Demand is +12% this week. Prices expected to rise in 3 days.</span></p>
-          <p>⭐ <strong>AI Visual Quality Check:</strong> Grade A ⭐ | Freshness: 92% | Defects: Low</p>
+      <!-- SECTION 2 TO 5: AI ANALYSIS & INSIGHTS -->
+      <div class="card" id="analysisContainer">
+        <h3>📊 AgriTwin Selling Assistant Insights</h3>
+        <div id="placeholderAnalysis" class="placeholder-msg">
+          <p>👈 Left side mein apni fasal ki details bharein aur <strong>"Analyze My Produce"</strong> button par click karein.</p>
+        </div>
+
+        <div id="activeAnalysis" style="display: none;">
           
-          <h4 style="color: #38bdf8; margin: 15px 0 5px 0; font-size: 15px;">🎯 Smart Buyer Matching & Optimization</h4>
-          
-          <div class="deal-card" style="border-color: #4ade80;">
-            <p style="color: #4ade80; font-weight: bold; margin-top:0;">🏆 AgriTwin Best Deal Recommendation</p>
-            <p><strong>Buyer:</strong> Local Wholesaler (Verified)</p>
-            <p><strong>Offer & Quantity:</strong> ₹58/kg for 400 kg (Low transport cost)</p>
-            <p><strong>Estimated Net Earning:</strong> <span style="color: #4ade80; font-weight: bold;">₹23,200</span></p>
-            <button onclick="alert('Offer Accepted! Buyer notified successfully.')" style="margin-top: 8px; background: #38bdf8; color: #000; border: none; padding: 6px 12px; border-radius: 4px; font-weight: bold; cursor: pointer;">Accept Deal / Counter Offer</button>
+          <!-- AI Recommended Price & Status -->
+          <div class="insight-box">
+            <h4>💰 Recommended Selling Price</h4>
+            <p class="highlight-price" id="resPriceRange">₹58 – ₹65 / kg</p>
+            <p id="resPriceStatus">Your expected price: ₹60/kg | Status: <span class="badge-green">🟢 Good Price</span></p>
           </div>
+
+          <!-- Market Trend -->
+          <div class="insight-box">
+            <h4>📈 Market Trend</h4>
+            <p id="resTrendText">₹52 &rarr; ₹55 &rarr; ₹58 &rarr; ₹61 <span class="trend-up">↗ Prices rising</span></p>
+            <p class="helper-text">Current trend ke according prices badh rahe hain. Agar aap 2–3 din wait kar sakte hain, better price milne ki possibility ho sakti hai.</p>
+          </div>
+
+          <!-- Expected Revenue & Profit Calculation -->
+          <div class="insight-box">
+            <h4>💵 Expected Revenue & Profit Breakdown</h4>
+            <div class="calc-row"><span>Available Quantity:</span> <strong id="calcQty">500 kg</strong></div>
+            <div class="calc-row"><span>Recommended Price:</span> <strong id="calcRecPrice">₹60/kg</strong></div>
+            <div class="calc-row"><span>Estimated Revenue:</span> <strong id="calcRevenue" style="color: #4ade80;">₹30,000</strong></div>
+            <div class="calc-row"><span>Estimated Transport/Expenses:</span> <strong id="calcExpense" style="color: #f87171;">- ₹3,000</strong></div>
+            <hr class="divider">
+            <div class="calc-row total"><span>Estimated Net Profit:</span> <strong id="calcNetProfit" style="color: #38bdf8;">₹27,000</strong></div>
+          </div>
+
+          <!-- Where Should I Sell? Comparison -->
+          <div class="insight-box">
+            <h4>🏪 Where Should I Sell? (Best Options)</h4>
+            <div class="option-card">
+              <div><span>Local Market</span><br><small>Lower transport cost</small></div>
+              <strong>₹55/kg</strong>
+            </div>
+            <div class="option-card">
+              <div><span>Wholesale Buyer</span><br><small>Bulk order support</small></div>
+              <strong>₹60/kg</strong>
+            </div>
+            <div class="option-card highlight-option">
+              <div><span>⭐ AgriTwin Marketplace</span><br><small>Direct verified buyer</small></div>
+              <strong style="color: #4ade80;">₹62/kg</strong>
+            </div>
+            <p class="recommendation-text">🏆 <strong>Best Option for You:</strong> AgriTwin Marketplace may give you the best estimated net earning after considering price and estimated transport cost.</p>
+          </div>
+
+          <button type="button" class="btn-success" onclick="listProduceToMarket()">🌾 List This Produce on Marketplace</button>
         </div>
 
       </div>
 
     </div>
+
+    <!-- SECTION 7 & 8: MY LISTED PRODUCE & BUYER OFFERS -->
+    <div class="bottom-sections-grid">
+      <div class="card">
+        <h3>🧑‍🌾 My Listed Produce</h3>
+        <div id="myListingsContainer">
+          <p class="placeholder-msg">No active listings yet. Analyze and list your produce above.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>🤝 New Buyer Offers</h3>
+        <div id="buyerOffersContainer">
+          <div class="offer-card">
+            <p><strong>🍅 Tomato (100 kg)</strong></p>
+            <p>Buyer wants: 100 kg | Your price: ₹60/kg | <span style="color: #f87171;">Buyer offer: ₹57/kg</span></p>
+            <div class="offer-actions">
+              <button class="btn-small accept" onclick="handleOffer(this, 'Accepted')">Accept</button>
+              <button class="btn-small counter" onclick="openCounterModal()">Counter Offer</button>
+              <button class="btn-small reject" onclick="handleOffer(this, 'Rejected')">Reject</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <script src="marketplace.js"></script>
