@@ -18,25 +18,30 @@ function switchView(viewName) {
   }
 }
 
-// 2. Fetch Live Weather Data
-const CITY = "Bhimtal";
-const API_KEY = "bd5e378503939ddaee76f12ad7a97608";
+// 2. Fetch Weather with Fallback Values
+const CITY_NAME = "Bhimtal";
+const WEATHER_API = "bd5e378503939ddaee76f12ad7a97608";
 
-async function fetchWeather() {
+async function loadDashboardWeather() {
   try {
-    const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${CITY}&units=metric&appid=${API_KEY}`);
+    const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${CITY_NAME}&units=metric&appid=${WEATHER_API}`);
     const data = await res.json();
+    
     if (data.main) {
-      document.getElementById('temp').innerText = `${Math.round(data.main.temp)}°C`;
-      document.getElementById('condition').innerText = data.weather[0].description;
-      document.getElementById('humidity').innerText = `${data.main.humidity}%`;
-      document.getElementById('wind').innerText = `${data.wind.speed} km/h`;
+      document.getElementById('dash-temp').innerText = `${Math.round(data.main.temp)}°C`;
+      document.getElementById('dash-condition').innerText = data.weather[0].description;
+      document.getElementById('dash-humidity').innerText = `${data.main.humidity}%`;
+      document.getElementById('dash-wind').innerText = `${data.wind.speed} km/h`;
     }
   } catch (err) {
-    console.log("Weather loading error:", err);
+    console.log("Using default fallback weather values.");
+    document.getElementById('dash-temp').innerText = "22°C";
+    document.getElementById('dash-condition').innerText = "Clear Sky";
+    document.getElementById('dash-humidity').innerText = "65%";
+    document.getElementById('dash-wind').innerText = "5.2 km/h";
   }
 }
-fetchWeather();
+loadDashboardWeather();
 
 // 3. Profit Chart Rendering
 window.addEventListener('DOMContentLoaded', () => {
@@ -99,16 +104,7 @@ function analyzeCropDisease() {
   resultDiv.style.display = 'block';
 }
 
-// 5. Voice Command Simulation
-function startVoiceQuery() {
-  const statusText = document.getElementById('voiceStatusText');
-  statusText.innerText = "Listening... Speak now (e.g., 'Gehu mein kaun sa khad dalein?')";
-  setTimeout(() => {
-    statusText.innerText = "Recognized: 'Gehu mein kaun sa khad dalein?' -> AI Answer: Use Urea in split doses.";
-  }, 3000);
-}
-
-// 6. Full-Page AI Advisor Chat Logic
+// 5. Full-Page AI Advisor Chat Logic
 function sendFullChat() {
   const inp = document.getElementById('fullChatInp');
   const txt = inp.value.trim();

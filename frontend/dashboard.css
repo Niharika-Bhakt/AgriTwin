@@ -26,7 +26,6 @@ body.dashboard-body {
   min-height: 100vh;
 }
 
-/* Glassmorphism Sidebar */
 .sidebar {
   width: 260px;
   background: rgba(13, 23, 17, 0.85);
@@ -68,7 +67,6 @@ body.dashboard-body {
   border-left: 4px solid var(--neon-green);
 }
 
-/* Main Content */
 .main-content {
   margin-left: 260px;
   flex: 1;
@@ -96,7 +94,6 @@ body.dashboard-body {
   gap: 20px;
 }
 
-/* Glassmorphism Cards */
 .card {
   background: var(--bg-card);
   backdrop-filter: blur(12px);
@@ -111,14 +108,6 @@ body.dashboard-body {
   color: var(--neon-green);
 }
 
-/* Weather Info */
-.weather-info {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-/* Form Inputs */
 input {
   background: #080f0c !important;
   border: 1px solid var(--border-color) !important;
