@@ -1,4 +1,4 @@
-// 1. View Switcher between Dashboard & Full-Page AI Advisor
+// 1. Switch View between Dashboard & AI Chat
 function switchView(viewName) {
   const dashView = document.getElementById('mainDashboardView');
   const aiView = document.getElementById('aiAdvisorSection');
@@ -49,59 +49,25 @@ window.addEventListener('DOMContentLoaded', () => {
         datasets: [{
           label: 'Net Profit (₹)',
           data: [4000, 5500, 3000, 7000, 8500, 6000, 9300],
-          borderColor: '#2e7d32',
-          backgroundColor: 'rgba(46, 125, 50, 0.1)',
+          borderColor: '#00ff66',
+          backgroundColor: 'rgba(0, 255, 102, 0.1)',
           fill: true,
           tension: 0.3
         }]
       },
-      options: { responsive: true, maintainAspectRatio: false }
+      options: { 
+        responsive: true, 
+        maintainAspectRatio: false,
+        scales: {
+          x: { ticks: { color: '#a3b8b0' }, grid: { color: '#22382b' } },
+          y: { ticks: { color: '#a3b8b0' }, grid: { color: '#22382b' } }
+        }
+      }
     });
   }
 });
 
-// 4. AI Price Suggestion & Marketplace
-const baseRates = { 'mango': [55, 70], 'tomato': [25, 35], 'potato': [18, 25], 'wheat': [26, 32] };
-
-function suggestAIPrice() {
-  const name = document.getElementById('pName').value.toLowerCase().trim();
-  const notice = document.getElementById('aiPriceNotice');
-  if (baseRates[name]) {
-    notice.innerText = `🤖 AgriTwin AI Suggested Rate: ₹${baseRates[name][0]} - ₹${baseRates[name][1]}/kg`;
-  } else if (name.length > 2) {
-    notice.innerText = `🤖 AgriTwin AI Suggested Avg Rate: ₹30 - ₹45/kg`;
-  } else {
-    notice.innerText = '';
-  }
-}
-
-let marketItems = [];
-function addMarketProduct(e) {
-  e.preventDefault();
-  const item = {
-    name: document.getElementById('pName').value,
-    qty: document.getElementById('pQty').value,
-    price: document.getElementById('pPrice').value,
-    loc: document.getElementById('pLoc').value
-  };
-  marketItems.push(item);
-  renderMarket();
-  document.getElementById('sellForm').reset();
-  document.getElementById('aiPriceNotice').innerText = '';
-}
-
-function renderMarket() {
-  const list = document.getElementById('marketList');
-  if (!list) return;
-  list.innerHTML = marketItems.map(i => `
-    <div style="border:1px solid #ccc; padding:10px; border-radius:6px; background:#fafafa;">
-      <b>📦 ${i.name}</b> - ₹${i.price}/kg (${i.qty} kg) <br>
-      <small>Location: ${i.loc}</small>
-    </div>
-  `).join('');
-}
-
-// 5. Image Preview & Crop Disease Diagnostic
+// 4. Image Preview & Crop Disease Diagnostic
 function previewImage(event) {
   const reader = new FileReader();
   const imageField = document.getElementById("imagePreview");
@@ -133,6 +99,15 @@ function analyzeCropDisease() {
   resultDiv.style.display = 'block';
 }
 
+// 5. Voice Command Simulation
+function startVoiceQuery() {
+  const statusText = document.getElementById('voiceStatusText');
+  statusText.innerText = "Listening... Speak now (e.g., 'Gehu mein kaun sa khad dalein?')";
+  setTimeout(() => {
+    statusText.innerText = "Recognized: 'Gehu mein kaun sa khad dalein?' -> AI Answer: Use Urea in split doses.";
+  }, 3000);
+}
+
 // 6. Full-Page AI Advisor Chat Logic
 function sendFullChat() {
   const inp = document.getElementById('fullChatInp');
@@ -140,25 +115,24 @@ function sendFullChat() {
   if (!txt) return;
 
   const box = document.getElementById('fullChatMsgs');
-  box.innerHTML += `<div style="background: #e3f2fd; padding: 12px 16px; border-radius: 8px; max-width: 75%; align-self: flex-end; color: #0d47a1;"><b>You:</b> ${txt}</div>`;
+  box.innerHTML += `<div style="background: rgba(0,120,255,0.1); border: 1px solid #22382b; padding: 12px 16px; border-radius: 8px; max-width: 75%; align-self: flex-end; color: #fff;"><b>You:</b> ${txt}</div>`;
   inp.value = '';
   box.scrollTop = box.scrollHeight;
 
   setTimeout(() => {
-    let reply = "Based on standard agricultural best practices, ensure proper soil moisture and nutrient balance.";
+    let reply = "Based on standard agricultural practices, ensure proper soil moisture and nutrient levels.";
     const lower = txt.toLowerCase();
-    if (lower.includes('wheat') || lower.includes('gehu')) reply = "For wheat crops, maintain regular light irrigation during crown root initiation and monitor for rust.";
-    if (lower.includes('price') || lower.includes('bhav')) reply = "Current market trends are stable with a potential upward shift next week.";
-    if (lower.includes('disease') || lower.includes('bimari')) reply = "Please upload an image of the affected leaf in the leaf diagnostic section for computer-vision analysis.";
+    if (lower.includes('wheat') || lower.includes('gehu')) reply = "For wheat crops, maintain regular light irrigation during the crown root initiation stage.";
+    if (lower.includes('price') || lower.includes('bhav')) reply = "Current market trends are stable with a potential upward shift expected next week.";
 
-    box.innerHTML += `<div style="background: #e8f5e9; padding: 12px 16px; border-radius: 8px; max-width: 75%; align-self: flex-start; color: #1b5e20;"><b>AgriTwin AI:</b> ${reply}</div>`;
+    box.innerHTML += `<div style="background: rgba(0,255,102,0.1); border: 1px solid #22382b; padding: 12px 16px; border-radius: 8px; max-width: 75%; align-self: flex-start; color: #fff;"><b>AgriTwin AI:</b> ${reply}</div>`;
     box.scrollTop = box.scrollHeight;
   }, 600);
 }
 
 function clearChat() {
   document.getElementById('fullChatMsgs').innerHTML = `
-    <div style="background: #e8f5e9; padding: 12px 16px; border-radius: 8px; max-width: 75%; align-self: flex-start; color: #1b5e20;">
-      <b>Chat cleared!</b> How else can I help you with your farm management today?
+    <div style="background: rgba(0,255,102,0.1); border: 1px solid #22382b; padding: 12px 16px; border-radius: 8px; max-width: 75%; align-self: flex-start; color: #fff;">
+      <b>Chat cleared!</b> How else can I help you today?
     </div>`;
 }

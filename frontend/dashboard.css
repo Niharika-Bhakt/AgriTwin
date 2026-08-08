@@ -1,3 +1,12 @@
+:root {
+  --bg-primary: #0a0f0d;
+  --bg-card: rgba(18, 28, 22, 0.75);
+  --neon-green: #00ff66;
+  --text-main: #ffffff;
+  --text-muted: #a3b8b0;
+  --border-color: #22382b;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,8 +15,10 @@
 }
 
 body.dashboard-body {
-  background-color: #f4f7f6;
-  color: #333;
+  background-color: var(--bg-primary);
+  background-image: radial-gradient(circle at 10% 20%, rgba(0, 255, 102, 0.03) 0%, transparent 40%);
+  color: var(--text-main);
+  min-height: 100vh;
 }
 
 .app-container {
@@ -15,24 +26,27 @@ body.dashboard-body {
   min-height: 100vh;
 }
 
-/* Sidebar Layout */
+/* Glassmorphism Sidebar */
 .sidebar {
   width: 260px;
-  background-color: #1b5e20;
-  color: white;
+  background: rgba(13, 23, 17, 0.85);
+  backdrop-filter: blur(12px);
+  border-right: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
   position: fixed;
   height: 100vh;
+  z-index: 10;
 }
 
 .logo-area {
   padding: 20px;
-  background-color: #113814;
+  background: rgba(8, 15, 12, 0.9);
+  border-bottom: 1px solid var(--border-color);
 }
 
-.logo-area h2 { font-size: 1.4rem; }
-.logo-area p { font-size: 0.8rem; color: #a5d6a7; }
+.logo-area h2 { font-size: 1.4rem; color: var(--neon-green); }
+.logo-area p { font-size: 0.8rem; color: var(--text-muted); }
 
 .nav-links {
   display: flex;
@@ -42,19 +56,19 @@ body.dashboard-body {
 
 .nav-links a {
   padding: 12px 20px;
-  color: #c8e6c9;
+  color: var(--text-muted);
   text-decoration: none;
   font-weight: 500;
   transition: 0.2s;
 }
 
 .nav-links a:hover, .nav-links a.active {
-  background-color: #2e7d32;
-  color: white;
-  border-left: 5px solid #a5d6a7;
+  background: rgba(0, 255, 102, 0.1);
+  color: var(--neon-green) !important;
+  border-left: 4px solid var(--neon-green);
 }
 
-/* Main Content Wrapper */
+/* Main Content */
 .main-content {
   margin-left: 260px;
   flex: 1;
@@ -63,13 +77,14 @@ body.dashboard-body {
 }
 
 .top-bar {
-  background-color: white;
+  background: rgba(13, 23, 17, 0.6);
+  backdrop-filter: blur(10px);
   padding: 18px 30px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.top-bar h1 { color: #1b5e20; font-size: 1.6rem; }
-.top-bar p { color: #666; font-size: 0.9rem; }
+.top-bar h1 { color: var(--neon-green); font-size: 1.6rem; }
+.top-bar p { color: var(--text-muted); font-size: 0.9rem; }
 
 .dashboard-container {
   max-width: 1100px;
@@ -81,88 +96,37 @@ body.dashboard-body {
   gap: 20px;
 }
 
+/* Glassmorphism Cards */
 .card {
-  background: white;
-  border-radius: 10px;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
 }
 
 .card h3 {
   margin-bottom: 15px;
-  color: #1b5e20;
+  color: var(--neon-green);
 }
 
-/* Weather */
+/* Weather Info */
 .weather-info {
   display: flex;
   align-items: center;
   gap: 25px;
 }
-.weather-info h2 { font-size: 2.5rem; color: #2e7d32; }
 
-/* Soil Tracker */
-.soil-stats { display: flex; gap: 15px; text-align: center; }
-.soil-box { flex: 1; padding: 12px; border-radius: 8px; }
-.soil-box.green { background: #e8f5e9; color: #2e7d32; }
-.soil-box.orange { background: #fff3e0; color: #e65100; }
-.soil-box.blue { background: #e1f5fe; color: #0288d1; }
-.soil-box h4 { margin-top: 5px; }
-
-/* AI Leaf Disease Upload Zone */
-.hidden-input { display: none; }
-.upload-container { margin-bottom: 10px; }
-.upload-zone {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 2px dashed #2e7d32;
-  background-color: #f1f8e9;
-  border-radius: 12px;
-  padding: 30px 20px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  min-height: 160px;
-}
-.upload-zone:hover {
-  background-color: #e8f5e9;
-  border-color: #1b5e20;
-}
-.upload-content h4 { color: #2e7d32; margin: 0 0 5px 0; font-size: 1.1rem; }
-.upload-content p { color: #777; font-size: 0.85rem; }
-.btn-action {
-  background: #2e7d32;
-  color: white;
-  border: none;
-  padding: 10px 18px;
+/* Form Inputs */
+input {
+  background: #080f0c !important;
+  border: 1px solid var(--border-color) !important;
+  color: #fff !important;
   border-radius: 6px;
-  cursor: pointer;
+  padding: 10px;
 }
-.result-box {
-  padding: 12px;
-  background: #f9f9f9;
-  border-radius: 6px;
-  border-left: 4px solid #d32f2f;
+input:focus {
+  border-color: var(--neon-green) !important;
+  outline: none;
 }
-
-/* Profit Section */
-.profit-stats { display: flex; gap: 15px; margin-bottom: 15px; }
-.stat-box { flex: 1; background: #f9f9f9; padding: 12px; border-radius: 6px; border-left: 4px solid #888; }
-.stat-box.highlight { border-left-color: #2e7d32; }
-.stat-box.highlight b { color: #2e7d32; }
-.chart-wrapper { height: 250px; position: relative; }
-
-/* Marketplace */
-.form-group { display: flex; gap: 10px; margin-bottom: 10px; }
-.form-group input { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline: none; }
-.ai-hint { font-size: 0.85rem; color: #2e7d32; font-weight: bold; margin-bottom: 10px; }
-.btn-submit { background: #2e7d32; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-bottom: 15px; }
-.market-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; margin-top: 15px; }
-.empty-msg { color: #777; font-size: 0.9rem; font-style: italic; }
-
-/* Government Schemes */
-.scheme-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.scheme-list li { padding: 10px; background: #fafafa; border: 1px solid #eee; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; }
-.scheme-list a { color: #2e7d32; text-decoration: none; font-weight: bold; }

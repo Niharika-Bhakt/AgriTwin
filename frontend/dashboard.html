@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AgriTwin Smart Farming Dashboard</title>
+  <title>AgriTwin - Smart Farming Dashboard</title>
   <link rel="stylesheet" href="dashboard.css">
   <!-- Chart.js Library -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -15,11 +15,11 @@
     <aside class="sidebar">
       <div class="logo-area">
         <h2>🌾 AgriTwin AI</h2>
-        <p>Smart Farming Dashboard</p>
+        <p>Smart Farm Operating System</p>
       </div>
       <nav class="nav-links">
         <a href="#" onclick="switchView('dashboard')" class="active" id="navDash">📊 Dashboard</a>
-        <a href="#" onclick="switchView('ai')" id="navAI">🤖 AI Advisor</a>
+        <a href="#" onclick="switchView('ai')" id="navAI">🤖 AI Advisor Chat</a>
         <a href="weather.html">🌦️ Weather</a>
         <a href="settings.html">⚙️ Settings</a>
       </nav>
@@ -31,159 +31,151 @@
       <!-- VIEW 1: MAIN DASHBOARD -->
       <div id="mainDashboardView">
         <header class="top-bar">
-          <h1>Farmer Dashboard</h1>
-          <p>Smart AI Powered Farm Management</p>
+          <h1>Farmer Command Center</h1>
+          <p>AI Powered Digital Farming Platform</p>
         </header>
 
         <div class="dashboard-container">
           
           <!-- Live Weather Section -->
-          <section class="card weather-card">
+          <section class="card">
             <h3>🌦️ Live Weather Forecast</h3>
             <div class="weather-info">
-              <h2 id="temp">-- °C</h2>
-              <p id="condition">Fetching live weather data...</p>
-              <div class="details">
-                <span>Humidity: <b id="humidity">--%</b></span> | 
-                <span>Wind Speed: <b id="wind">-- km/h</b></span>
+              <h2 id="temp" style="color: #00ff66;">-- °C</h2>
+              <div>
+                <p id="condition" style="color: #fff; font-weight: 500;">Fetching live weather data...</p>
+                <div style="font-size: 0.85rem; color: #a3b8b0; margin-top: 4px;">
+                  <span>Humidity: <b id="humidity" style="color:#00ff66;">--%</b></span> | 
+                  <span>Wind Speed: <b id="wind" style="color:#00ff66;">-- km/h</b></span>
+                </div>
               </div>
             </div>
           </section>
 
           <!-- Soil Health & Smart Irrigation Monitor -->
-          <section class="card soil-card">
+          <section class="card">
             <h3>💧 Soil Health & Smart Irrigation Tracker</h3>
             <div class="soil-stats">
-              <div class="soil-box green">
-                <small>Moisture Level</small>
-                <h4>42% (Optimal)</h4>
+              <div class="soil-box" style="background: rgba(0,255,102,0.05); border: 1px solid #22382b; padding: 15px; border-radius: 8px; text-align: center;">
+                <small style="color: #a3b8b0;">Moisture Level</small>
+                <h4 style="color: #00ff66; margin-top: 5px;">42% (Optimal)</h4>
               </div>
-              <div class="soil-box orange">
-                <small>Soil pH Level</small>
-                <h4>6.5 (Balanced)</h4>
+              <div class="soil-box" style="background: rgba(255,165,0,0.05); border: 1px solid #382b22; padding: 15px; border-radius: 8px; text-align: center;">
+                <small style="color: #a3b8b0;">Soil pH Level</small>
+                <h4 style="color: #ffa500; margin-top: 5px;">6.5 (Balanced)</h4>
               </div>
-              <div class="soil-box blue">
-                <small>Next Irrigation Schedule</small>
-                <h4>Tomorrow 7:00 AM</h4>
+              <div class="soil-box" style="background: rgba(0,210,255,0.05); border: 1px solid #223238; padding: 15px; border-radius: 8px; text-align: center;">
+                <small style="color: #a3b8b0;">Next Irrigation Schedule</small>
+                <h4 style="color: #00d2ff; margin-top: 5px;">Tomorrow 7:00 AM</h4>
               </div>
             </div>
           </section>
 
           <!-- AI Crop Disease Diagnostic with Drag & Drop Preview -->
-          <section class="card disease-card">
+          <section class="card">
             <h3>🔬 AI Crop Disease Diagnostic</h3>
-            <p style="color: #666; font-size: 0.9rem; margin-bottom: 15px;">Upload a clear picture of the affected crop leaf for instant AI analysis.</p>
+            <p style="color: #a3b8b0; font-size: 0.9rem; margin-bottom: 15px;">Upload a clear picture of the affected crop leaf for computer-vision analysis.</p>
 
             <div class="upload-container">
-              <input type="file" id="cropImg" accept="image/*" class="hidden-input" onchange="previewImage(event)">
-              <label for="cropImg" class="upload-zone" id="uploadZone">
+              <input type="file" id="cropImg" accept="image/*" style="display: none;" onchange="previewImage(event)">
+              <label for="cropImg" class="upload-zone" id="uploadZone" style="display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px dashed #22382b; background: rgba(8,15,12,0.6); border-radius: 12px; padding: 30px; text-align: center; cursor: pointer; min-height: 160px;">
                 <div class="upload-content" id="uploadContent">
                   <span style="font-size: 3rem; display: block; margin-bottom: 10px;">📸</span>
-                  <h4>Click or Drag & Drop leaf image here</h4>
-                  <p>Supports JPG, PNG (Max 5MB)</p>
+                  <h4 style="color: #00ff66; margin-bottom: 5px;">Click or Drag & Drop leaf image here</h4>
+                  <p style="color: #a3b8b0; font-size: 0.85rem;">Supports JPG, PNG (Max 5MB)</p>
                 </div>
                 <img id="imagePreview" src="" alt="Leaf Preview" style="display: none; max-height: 220px; width: 100%; object-fit: cover; border-radius: 8px;">
               </label>
             </div>
 
-            <button onclick="analyzeCropDisease()" class="btn-action" style="width: 100%; margin-top: 15px; padding: 12px; font-weight: bold;">🔍 Analyze Leaf Image</button>
+            <button onclick="analyzeCropDisease()" style="width: 100%; margin-top: 15px; padding: 12px; font-weight: bold; background: #00ff66; color: #0a0f0d; border: none; border-radius: 6px; cursor: pointer;">🔍 Analyze Leaf Image</button>
 
-            <div id="diseaseResult" class="result-box" style="display:none; margin-top: 15px;">
-              <p><b>Status:</b> <span style="color:#d32f2f; font-weight:bold;">Fungal Leaf Spot Detected</span></p>
-              <p><b>AI Recommended Solution:</b> Spray Neem Oil or Copper Oxychloride spray twice a week.</p>
-              <div class="confidence-bar" style="margin-top: 8px;">
-                <small>AI Confidence: 92%</small>
-                <div style="background: #e0e0e0; height: 6px; border-radius: 3px; width: 100%; margin-top: 3px;">
-                  <div style="background: #2e7d32; height: 100%; width: 92%; border-radius: 3px;"></div>
-                </div>
+            <div id="diseaseResult" style="display:none; margin-top: 15px; padding: 12px; background: rgba(211,47,47,0.1); border-left: 4px solid #d32f2f; border-radius: 6px;">
+              <p style="color: #fff;"><b>Status:</b> <span style="color:#ff5252; font-weight:bold;">Fungal Leaf Spot Detected</span></p>
+              <p style="color: #a3b8b0; font-size: 0.9rem; margin-top: 4px;"><b>AI Recommendation:</b> Spray Neem Oil or Copper Oxychloride twice weekly.</p>
+            </div>
+          </section>
+
+          <!-- Naya Feature: Equipment Rental & Store -->
+          <section class="card">
+            <h3>🚜 Agri-Rental & Direct Store (Kiraye ya Kharidein)</h3>
+            <p style="color: #a3b8b0; font-size: 0.9rem; margin-bottom: 15px;">Rent heavy farming equipment or purchase organic inputs directly.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
+              <div style="background: rgba(8,15,12,0.8); border: 1px solid #22382b; padding: 15px; border-radius: 8px;">
+                <span style="font-size: 2rem;">🚁</span>
+                <h4 style="color: #00ff66; margin-top: 5px;">Agricultural Spray Drone</h4>
+                <p style="font-size: 0.85rem; color: #a3b8b0;">Rent at ₹500/acre</p>
+                <button onclick="alert('Drone Rental Request Placed Successfully!')" style="margin-top: 10px; padding: 8px; width: 100%; background: #00ff66; color: #0a0f0d; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">Rent Now</button>
+              </div>
+              
+              <div style="background: rgba(8,15,12,0.8); border: 1px solid #22382b; padding: 15px; border-radius: 8px;">
+                <span style="font-size: 2rem;">🧪</span>
+                <h4 style="color: #00ff66; margin-top: 5px;">Organic NPK Fertilizer</h4>
+                <p style="font-size: 0.85rem; color: #a3b8b0;">Buy for ₹1,200 (50kg)</p>
+                <button onclick="alert('Order Placed! Delivery scheduled in 2 days.')" style="margin-top: 10px; padding: 8px; width: 100%; background: #00ff66; color: #0a0f0d; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">Buy Product</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Naya Feature: Voice-Powered Farmer Query -->
+          <section class="card">
+            <h3>🎙️ Voice Command & Audio Assistant</h3>
+            <p style="color: #a3b8b0; font-size: 0.9rem; margin-bottom: 15px;">Speak your farming issues directly through phone mic.</p>
+            <div style="display: flex; align-items: center; gap: 15px; background: rgba(8,15,12,0.8); padding: 15px; border-radius: 8px; border: 1px solid #22382b;">
+              <button onclick="startVoiceQuery()" style="width: 45px; height: 45px; border-radius: 50%; font-size: 1.3rem; display: flex; align-items: center; justify-content: center; background: #00ff66; border: none; cursor: pointer;">🎤</button>
+              <div style="flex: 1;">
+                <p id="voiceStatusText" style="color: #fff; font-weight: 500;">Tap mic button to start speaking...</p>
+                <small style="color: #a3b8b0;">AgriTwin Neural Voice Engine</small>
               </div>
             </div>
           </section>
 
           <!-- Financial & Profit Overview -->
-          <section class="card profit-card">
+          <section class="card">
             <h3>💰 Financial & Profit Overview</h3>
-            <div class="profit-stats">
-              <div class="stat-box">Revenue: <b>₹12,500</b></div>
-              <div class="stat-box">Expenses: <b>₹3,200</b></div>
-              <div class="stat-box highlight">Net Profit: <b>₹9,300</b></div>
+            <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+              <div style="flex: 1; background: rgba(8,15,12,0.8); padding: 12px; border-radius: 6px; border-left: 4px solid #a3b8b0;">Revenue: <b style="color:#fff;">₹12,500</b></div>
+              <div style="flex: 1; background: rgba(8,15,12,0.8); padding: 12px; border-radius: 6px; border-left: 4px solid #ff5252;">Expenses: <b style="color:#fff;">₹3,200</b></div>
+              <div style="flex: 1; background: rgba(8,15,12,0.8); padding: 12px; border-radius: 6px; border-left: 4px solid #00ff66;">Net Profit: <b style="color:#00ff66;">₹9,300</b></div>
             </div>
-            <div class="chart-wrapper">
+            <div style="height: 250px; position: relative;">
               <canvas id="profitChart"></canvas>
             </div>
-          </section>
-
-          <!-- Farmer Marketplace -->
-          <section class="card marketplace-card">
-            <h3>🛒 Farmer Marketplace</h3>
-            <form id="sellForm" onsubmit="addMarketProduct(event)">
-              <div class="form-group">
-                <input type="text" id="pName" placeholder="Crop Name (e.g. Potato, Mango)" required oninput="suggestAIPrice()">
-                <input type="number" id="pQty" placeholder="Quantity (in kg)" required>
-              </div>
-              <div class="form-group">
-                <input type="number" id="pPrice" placeholder="Your Expected Price (₹/kg)" required>
-                <input type="text" id="pLoc" placeholder="Farm Location" required>
-              </div>
-              <p id="aiPriceNotice" class="ai-hint"></p>
-              <button type="submit" class="btn-submit">Post Product</button>
-            </form>
-
-            <h4>Active Marketplace Listings</h4>
-            <div id="marketList" class="market-grid">
-              <p class="empty-msg">No active listings yet. Add a product above!</p>
-            </div>
-          </section>
-
-          <!-- Government Schemes -->
-          <section class="card scheme-card">
-            <h3>🏛️ Government Schemes & Subsidies</h3>
-            <ul class="scheme-list">
-              <li>
-                <span>🌾 <b>PM-Kisan Samman Nidhi</b> - ₹6,000 / year direct transfer</span>
-                <a href="https://pmkisan.gov.in" target="_blank">Check Status</a>
-              </li>
-              <li>
-                <span>🛡️ <b>Pradhan Mantri Fasal Bima Yojana</b> - Crop Insurance</span>
-                <a href="https://pmfby.gov.in" target="_blank">Apply Now</a>
-              </li>
-            </ul>
           </section>
 
         </div>
       </div>
 
-      <!-- VIEW 2: DEDICATED FULL-PAGE AI ADVISOR (Hidden by default) -->
+      <!-- VIEW 2: FULL-PAGE AI ADVISOR CHAT -->
       <div id="aiAdvisorSection" style="display: none; height: 100%;">
         <header class="top-bar">
-          <h1>AI Advisor & Assistant</h1>
-          <p>Instant expert recommendations for your farm operations.</p>
+          <h1>AgriTwin AI Advisor</h1>
+          <p>Instant expert recommendations for your crops and soil.</p>
         </header>
 
-        <section class="card full-chat-card" style="margin-top: 20px; display: flex; flex-direction: column; height: calc(100vh - 160px); background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-          
-          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px;">
+        <section class="card" style="margin: 20px; display: flex; flex-direction: column; height: calc(100vh - 160px);">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #22382b; padding-bottom: 15px; margin-bottom: 15px;">
             <div style="display: flex; align-items: center; gap: 10px;">
               <span style="font-size: 2rem;">🤖</span>
               <div>
-                <h3 style="color: #1b5e20; margin: 0;">AgriTwin Smart Expert</h3>
-                <small style="color: #666;">Online | Ready to answer crop, soil & market queries</small>
+                <h3 style="color: #00ff66; margin: 0;">AI Smart Expert</h3>
+                <small style="color: #a3b8b0;">Online | Ready to answer crop & market queries</small>
               </div>
             </div>
-            <button onclick="clearChat()" style="background: #d32f2f; color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-weight: bold;">Clear Chat</button>
+            <button onclick="clearChat()" style="background: #d32f2f; color: white; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-weight: bold;">Clear Chat</button>
           </div>
 
           <div id="fullChatMsgs" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding-right: 10px;">
-            <div style="background: #e8f5e9; padding: 12px 16px; border-radius: 8px; max-width: 75%; align-self: flex-start; color: #1b5e20;">
-              <b>Namaste Farmer!</b> Main AgriTwin AI hoon. Aap apni fasal, khet ki mitti, mausam ya kisi bimari ke baare mein mujhse yahan detail mein pooch sakte hain.
+            <div style="background: rgba(0,255,102,0.1); border: 1px solid #22382b; padding: 12px 16px; border-radius: 8px; max-width: 75%; align-self: flex-start; color: #fff;">
+              <b>Namaste Farmer!</b> Main AgriTwin AI hoon. Aap apni fasal ya kheti se jude koi bhi sawaal yahan pooch sakte hain.
             </div>
           </div>
 
-          <div style="display: flex; gap: 10px; margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px;">
-            <input type="text" id="fullChatInp" placeholder="Ask anything about farming (e.g., How to protect wheat from rust?)..." onkeypress="if(event.key==='Enter') sendFullChat()" style="flex: 1; padding: 12px 15px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; outline: none;">
-            <button onclick="sendFullChat()" style="background: #2e7d32; color: white; border: none; padding: 0 25px; border-radius: 8px; font-weight: bold; cursor: pointer;">Send Query</button>
+          <div style="display: flex; gap: 10px; margin-top: 15px; border-top: 1px solid #22382b; padding-top: 15px;">
+            <input type="text" id="fullChatInp" placeholder="Ask anything about farming..." onkeypress="if(event.key==='Enter') sendFullChat()" style="flex: 1; padding: 12px; background: #080f0c; border: 1px solid #22382b; color: white; border-radius: 8px; outline: none;">
+            <button onclick="sendFullChat()" style="background: #00ff66; color: #0a0f0d; border: none; padding: 0 25px; border-radius: 8px; font-weight: bold; cursor: pointer;">Send Query</button>
           </div>
-
         </section>
       </div>
 
