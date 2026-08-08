@@ -221,9 +221,10 @@ header {
   padding-left: 20px;
 }
 
-.menu-dropdown:hover .dropdown-content {
+.menu-dropdown.active .dropdown-content {
   display: block;
 }
+
 
 /* Rest of your original CSS code remains completely intact below */
 .hero {
