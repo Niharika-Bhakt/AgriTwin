@@ -1,4 +1,3 @@
-// Global variable to store current analysis data
 let currentAnalysis = null;
 
 function runProduceAnalysis() {
@@ -14,14 +13,13 @@ function runProduceAnalysis() {
     return;
   }
 
-  // Dynamic calculations based on inputs
   const basePrice = expectedPrice > 0 ? expectedPrice : 55;
   const recMin = Math.round(basePrice * 0.95);
   const recMax = Math.round(basePrice * 1.10);
   const recPrice = Math.round((recMin + recMax) / 2);
 
   const revenue = qty * recPrice;
-  const expense = Math.round(revenue * 0.1); // Estimated transport/handling 10%
+  const expense = Math.round(revenue * 0.1); 
   const netProfit = revenue - expense;
 
   currentAnalysis = {
@@ -37,7 +35,6 @@ function runProduceAnalysis() {
     netProfit
   };
 
-  // Update UI with calculated data
   document.getElementById("placeholderAnalysis").style.display = "none";
   document.getElementById("activeAnalysis").style.display = "block";
 
@@ -58,7 +55,6 @@ function listProduceToMarket() {
 
   const container = document.getElementById("myListingsContainer");
   
-  // Remove placeholder text if present
   if (container.querySelector(".placeholder-msg")) {
     container.innerHTML = "";
   }

@@ -9,12 +9,12 @@
 <body>
 
   <div class="market-wrapper">
-    <!-- Header & Concept Intro -->
+    <!-- Header & Concept Intro (Converted to English) -->
     <header>
       <h1>🌾 AgriTwin Smart Marketplace</h1>
       <p class="subtitle">Your farm produce. Your market. Your best selling decision.</p>
       <div class="intro-box">
-        <p><strong>Apni fasal, quantity aur location ki details enter karein.</strong> AgriTwin aapko estimated market price, recommended selling price, market trend, expected revenue aur estimated profit batayega. Analysis ke baad aap apni produce ko marketplace par buyers ke liye list kar sakte hain.</p>
+        <p><strong>Enter your crop, quantity, and location details.</strong> AgriTwin will provide you with the estimated market price, recommended selling price, market trend, expected revenue, and estimated profit. After analysis, you can list your produce on the marketplace for buyers.</p>
       </div>
     </header>
 
@@ -48,7 +48,7 @@
             <div class="form-group">
               <label>Available Quantity</label>
               <input type="number" id="cropQty" placeholder="e.g., 500" required>
-              <span class="helper-text">Kitni fasal bechne ke liye available hai?</span>
+              <span class="helper-text">Enter the total quantity of produce available for sale.</span>
             </div>
             <div class="form-group">
               <label>Unit</label>
@@ -84,7 +84,7 @@
             <div class="form-group">
               <label>Your Expected Price (₹/unit)</label>
               <input type="number" id="expectedPrice" placeholder="e.g., 60">
-              <span class="helper-text">Aap kitne ₹ par bechna chahte hain? (Optional)</span>
+              <span class="helper-text">Enter your desired selling price per unit (Optional).</span>
             </div>
           </div>
 
@@ -101,7 +101,7 @@
       <div class="card" id="analysisContainer">
         <h3>📊 AgriTwin Selling Assistant Insights</h3>
         <div id="placeholderAnalysis" class="placeholder-msg">
-          <p>👈 Left side mein apni fasal ki details bharein aur <strong>"Analyze My Produce"</strong> button par click karein.</p>
+          <p>👈 Fill in your crop details on the left side and click the <strong>"Analyze My Produce"</strong> button.</p>
         </div>
 
         <div id="activeAnalysis" style="display: none;">
@@ -117,7 +117,7 @@
           <div class="insight-box">
             <h4>📈 Market Trend</h4>
             <p id="resTrendText">₹52 &rarr; ₹55 &rarr; ₹58 &rarr; ₹61 <span class="trend-up">↗ Prices rising</span></p>
-            <p class="helper-text">Current trend ke according prices badh rahe hain. Agar aap 2–3 din wait kar sakte hain, better price milne ki possibility ho sakti hai.</p>
+            <p class="helper-text">Prices are trending upward according to current data. Waiting 2–3 days may yield better pricing opportunities.</p>
           </div>
 
           <!-- Expected Revenue & Profit Calculation -->
