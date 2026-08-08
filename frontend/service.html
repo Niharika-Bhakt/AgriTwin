@@ -13,11 +13,41 @@
     <a href="index.html" class="back-home"><i class="ri-arrow-left-line"></i> Back to Home</a>
     
     <div class="booking-header">
-      <h2>🌾 AgriTwin Service Booking</h2>
-      <p>Fill out the details below to book verified agricultural experts, machinery, or drone services for your farm.</p>
+      <h2>Uber For <span>Agriculture</span></h2>
+      <p>Select a service below, enter your details, and book verified agriculture experts instantly.</p>
     </div>
 
+    <!-- Service Cards Selection Grid -->
+    <div class="services-grid">
+      <div class="service-option-card" onclick="selectService('Spray Experts', this)">
+        <i class="ri-user-star-line"></i>
+        <h3>Spray Experts</h3>
+        <p>Book verified professionals for crop spraying & field management.</p>
+      </div>
+
+      <div class="service-option-card" onclick="selectService('Drone Services', this)">
+        <i class="ri-drone-line"></i>
+        <h3>Drone Services</h3>
+        <p>Get drone-based crop monitoring and spraying solutions.</p>
+      </div>
+
+      <div class="service-option-card" onclick="selectService('Farm Equipment', this)">
+        <i class="ri-truck-line"></i>
+        <h3>Farm Equipment</h3>
+        <p>Rent tractors, harvesters and modern farming equipment with ease.</p>
+      </div>
+
+      <div class="service-option-card" onclick="selectService('Soil Testing', this)">
+        <i class="ri-test-tube-line"></i>
+        <h3>Soil Testing</h3>
+        <p>Analyze soil quality and receive AI-powered farming recommendations.</p>
+      </div>
+    </div>
+
+    <!-- Booking Input Form -->
     <form id="serviceBookingForm">
+      <input type="hidden" id="selectedServiceInput" required>
+
       <div class="form-group">
         <label for="farmerName">Farmer Name</label>
         <input type="text" id="farmerName" placeholder="Enter your full name" required>
@@ -29,22 +59,11 @@
       </div>
 
       <div class="form-group">
-        <label for="serviceType">Select Agriculture Service</label>
-        <select id="serviceType" required>
-          <option value="" disabled selected>-- Choose a Service --</option>
-          <option value="Spray Experts">Spray Experts (Crop Spraying & Management)</option>
-          <option value="Drone Services">Drone Services (Monitoring & Spraying)</option>
-          <option value="Farm Equipment">Farm Equipment (Tractors & Harvesters Rental)</option>
-          <option value="Soil Testing">Soil Testing & AI Nutrient Analysis</option>
-        </select>
-      </div>
-
-      <div class="form-group">
         <label for="contactNumber">Contact Number</label>
         <input type="tel" id="contactNumber" placeholder="Enter your 10-digit mobile number" pattern="[0-9]{10}" required>
       </div>
 
-      <button type="submit" class="btn-submit">Book Service Now <i class="ri-check-line"></i></button>
+      <button type="submit" class="btn-submit">Book Selected Service Now <i class="ri-check-line"></i></button>
     </form>
   </div>
 
