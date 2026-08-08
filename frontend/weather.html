@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriTwin - Weather Forecast</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="dashboard-body">
+
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo-area">
+        <h2>🌾 AgriTwin AI</h2>
+        <p>Smart Farm Operating System</p>
+      </div>
+      <nav class="nav-links">
+        <a href="dashboard.html">📊 Dashboard</a>
+        <a href="dashboard.html">🤖 AI Advisor Chat</a>
+        <a href="weather.html" class="active">🌦️ Weather</a>
+        <a href="settings.html">⚙️ Settings</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-bar">
+        <h1>Live Weather & Climate Advisory</h1>
+        <p>Real-time meteorological updates for your fields</p>
+      </header>
+
+      <div class="dashboard-container">
+        <!-- Current Weather Card -->
+        <section class="card">
+          <h3>🌤️ Current Conditions</h3>
+          <div class="weather-info" style="display: flex; align-items: center; gap: 25px; margin-top: 15px;">
+            <h2 id="temp" style="color: #00ff66; font-size: 3rem;">-- °C</h2>
+            <div>
+              <p id="condition" style="color: #fff; font-size: 1.1rem; font-weight: 500;">Loading climate data...</p>
+              <div style="font-size: 0.9rem; color: #a3b8b0; margin-top: 6px;">
+                <span>Humidity: <b id="humidity" style="color:#00ff66;">--%</b></span> | 
+                <span>Wind Speed: <b id="wind" style="color:#00ff66;">-- km/h</b></span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5-Day Forecast Grid -->
+        <section class="card">
+          <h3>📅 5-Day Agricultural Weather Outlook</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-top: 15px;">
+            <div style="background: rgba(8,15,12,0.8); border: 1px solid #22382b; padding: 15px; border-radius: 8px; text-align: center;">
+              <p style="color: #00ff66; font-weight: bold;">Tomorrow</p>
+              <span style="font-size: 2rem; display: block; margin: 10px 0;">⛅</span>
+              <h4 style="color: #fff;">28°C / 18°C</h4>
+              <small style="color: #a3b8b0;">Light Breeze</small>
+            </div>
+            <div style="background: rgba(8,15,12,0.8); border: 1px solid #22382b; padding: 15px; border-radius: 8px; text-align: center;">
+              <p style="color: #00ff66; font-weight: bold;">Monday</p>
+              <span style="font-size: 2rem; display: block; margin: 10px 0;">☀️</span>
+              <h4 style="color: #fff;">30°C / 19°C</h4>
+              <small style="color: #a3b8b0;">Sunny & Clear</small>
+            </div>
+            <div style="background: rgba(8,15,12,0.8); border: 1px solid #22382b; padding: 15px; border-radius: 8px; text-align: center;">
+              <p style="color: #00ff66; font-weight: bold;">Tuesday</p>
+              <span style="font-size: 2rem; display: block; margin: 10px 0;">🌧️</span>
+              <h4 style="color: #fff;">24°C / 16°C</h4>
+              <small style="color: #a3b8b0;">Rain Expected</small>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const CITY = "Bhimtal";
+    const API_KEY = "bd5e378503939ddaee76f12ad7a97608";
+    async function fetchWeather() {
+      try {
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${CITY}&units=metric&appid=${API_KEY}`);
+        const data = await res.json();
+        if (data.main) {
+          document.getElementById('temp').innerText = `${Math.round(data.main.temp)}°C`;
+          document.getElementById('condition').innerText = data.weather[0].description;
+          document.getElementById('humidity').innerText = `${data.main.humidity}%`;
+          document.getElementById('wind').innerText = `${data.wind.speed} km/h`;
+        }
+      } catch (err) { console.log(err); }
+    }
+    fetchWeather();
+  </script>
+</body>
+</html>
