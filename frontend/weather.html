@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AgriTwin - Weather Forecast</title>
+  <title>AgriTwin - Advanced Weather & Climate</title>
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body class="dashboard-body">
@@ -27,69 +27,99 @@
     <main class="main-content">
       <header class="top-bar">
         <h1>Live Weather & Climate Advisory</h1>
-        <p>Real-time meteorological updates for your fields</p>
+        <p>Real-time meteorological updates and farming advisories for Bhimtal</p>
       </header>
 
       <div class="dashboard-container">
-        <!-- Current Weather Card -->
-        <section class="card">
-          <h3>🌤️ Current Conditions</h3>
-          <div class="weather-info" style="display: flex; align-items: center; gap: 25px; margin-top: 15px;">
-            <h2 id="temp" style="color: #00ff66; font-size: 3rem;">-- °C</h2>
-            <div>
-              <p id="condition" style="color: #fff; font-size: 1.1rem; font-weight: 500;">Loading climate data...</p>
-              <div style="font-size: 0.9rem; color: #a3b8b0; margin-top: 6px;">
-                <span>Humidity: <b id="humidity" style="color:#00ff66;">--%</b></span> | 
-                <span>Wind Speed: <b id="wind" style="color:#00ff66;">-- km/h</b></span>
+        <!-- Current Weather & Farm Metrics Grid -->
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+          
+          <!-- Current Conditions Card -->
+          <section class="card">
+            <h3>🌤️ Current Field Conditions</h3>
+            <div class="weather-info" style="display: flex; align-items: center; gap: 25px; margin-top: 15px;">
+              <h2 id="temp" style="color: #00ff66; font-size: 3rem;">-- °C</h2>
+              <div>
+                <p id="condition" style="color: #fff; font-size: 1.1rem; font-weight: 500;">Fetching live data...</p>
+                <div style="font-size: 0.9rem; color: #a3b8b0; margin-top: 6px; display: flex; gap: 15px;">
+                  <span>Humidity: <b id="humidity" style="color:#00ff66;">--%</b></span>
+                  <span>Wind: <b id="wind" style="color:#00ff66;">-- km/h</b></span>
+                  <span>Pressure: <b id="pressure" style="color:#00ff66;">-- hPa</b></span>
+                </div>
               </div>
             </div>
+          </section>
+
+          <!-- Smart Farm Risk Advisory Card -->
+          <section class="card" style="background: rgba(0, 255, 102, 0.03); border-color: #00ff6633;">
+            <h3>🛡️ AI Crop Advisory</h3>
+            <p id="advisory-text" style="color: #a3b8b0; font-size: 0.9rem; margin-top: 12px;">
+              Analyzing climate patterns for irrigation safety...
+            </p>
+          </section>
+        </div>
+
+        <!-- 7-Day Agricultural Weather Outlook -->
+        <section class="card" style="margin-top: 20px;">
+          <h3>📅 7-Day Extended Agricultural Outlook</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-top: 15px;">
+            
+            <div style="background: rgba(8,15,12,0.8); border: 1px solid #22382b; padding: 12px; border-radius: 8px; text-align: center;">
+              <p style="color: #00ff66; font-weight: bold; font-size: 0.9rem;">Sun</p>
+              <span style="font-size: 1.8rem; display: block; margin: 8px 0;">☀️</span>
+              <h4 style="color: #fff; font-size: 1rem;">29° / 18°</h4>
+              <small style="color: #a3b8b0;">Optimal Spray</small>
+            </div>
+
+            <div style="background: rgba(8,15,12,0.8); border: 1px solid #22382b; padding: 12px; border-radius: 8px; text-align: center;">
+              <p style="color: #00ff66; font-weight: bold; font-size: 0.9rem;">Mon</p>
+              <span style="font-size: 1.8rem; display: block; margin: 8px 0;">⛅</span>
+              <h4 style="color: #fff; font-size: 1rem;">27° / 17°</h4>
+              <small style="color: #a3b8b0;">Cloudy</small>
+            </div>
+
+            <div style="background: rgba(8,15,12,0.8); border: 1px solid #22382b; padding: 12px; border-radius: 8px; text-align: center;">
+              <p style="color: #00ff66; font-weight: bold; font-size: 0.9rem;">Tue</p>
+              <span style="font-size: 1.8rem; display: block; margin: 8px 0;">🌧️</span>
+              <h4 style="color: #fff; font-size: 1rem;">23° / 15°</h4>
+              <small style="color: #a3b8b0;">Rain Warning</small>
+            </div>
+
+            <div style="background: rgba(8,15,12,0.8); border: 1px solid #22382b; padding: 12px; border-radius: 8px; text-align: center;">
+              <p style="color: #00ff66; font-weight: bold; font-size: 0.9rem;">Wed</p>
+              <span style="font-size: 1.8rem; display: block; margin: 8px 0;">🌦️</span>
+              <h4 style="color: #fff; font-size: 1rem;">25° / 16°</h4>
+              <small style="color: #a3b8b0;">Light Showers</small>
+            </div>
+
+            <div style="background: rgba(8,15,12,0.8); border: 1px solid #22382b; padding: 12px; border-radius: 8px; text-align: center;">
+              <p style="color: #00ff66; font-weight: bold; font-size: 0.9rem;">Thu</p>
+              <span style="font-size: 1.8rem; display: block; margin: 8px 0;">☀️</span>
+              <h4 style="color: #fff; font-size: 1rem;">28° / 17°</h4>
+              <small style="color: #a3b8b0;">Clear Sky</small>
+            </div>
+
+            <div style="background: rgba(8,15,12,0.8); border: 1px solid #22382b; padding: 12px; border-radius: 8px; text-align: center;">
+              <p style="color: #00ff66; font-weight: bold; font-size: 0.9rem;">Fri</p>
+              <span style="font-size: 1.8rem; display: block; margin: 8px 0;">🌤️</span>
+              <h4 style="color: #fff; font-size: 1rem;">29° / 18°</h4>
+              <small style="color: #a3b8b0;">Good Sunlight</small>
+            </div>
+
+            <div style="background: rgba(8,15,12,0.8); border: 1px solid #22382b; padding: 12px; border-radius: 8px; text-align: center;">
+              <p style="color: #00ff66; font-weight: bold; font-size: 0.9rem;">Sat</p>
+              <span style="font-size: 1.8rem; display: block; margin: 8px 0;">☀️</span>
+              <h4 style="color: #fff; font-size: 1rem;">30° / 19°</h4>
+              <small style="color: #a3b8b0;">Dry & Sunny</small>
+            </div>
+
           </div>
         </section>
 
-        <!-- 5-Day Forecast Grid -->
-        <section class="card">
-          <h3>📅 5-Day Agricultural Weather Outlook</h3>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-top: 15px;">
-            <div style="background: rgba(8,15,12,0.8); border: 1px solid #22382b; padding: 15px; border-radius: 8px; text-align: center;">
-              <p style="color: #00ff66; font-weight: bold;">Tomorrow</p>
-              <span style="font-size: 2rem; display: block; margin: 10px 0;">⛅</span>
-              <h4 style="color: #fff;">28°C / 18°C</h4>
-              <small style="color: #a3b8b0;">Light Breeze</small>
-            </div>
-            <div style="background: rgba(8,15,12,0.8); border: 1px solid #22382b; padding: 15px; border-radius: 8px; text-align: center;">
-              <p style="color: #00ff66; font-weight: bold;">Monday</p>
-              <span style="font-size: 2rem; display: block; margin: 10px 0;">☀️</span>
-              <h4 style="color: #fff;">30°C / 19°C</h4>
-              <small style="color: #a3b8b0;">Sunny & Clear</small>
-            </div>
-            <div style="background: rgba(8,15,12,0.8); border: 1px solid #22382b; padding: 15px; border-radius: 8px; text-align: center;">
-              <p style="color: #00ff66; font-weight: bold;">Tuesday</p>
-              <span style="font-size: 2rem; display: block; margin: 10px 0;">🌧️</span>
-              <h4 style="color: #fff;">24°C / 16°C</h4>
-              <small style="color: #a3b8b0;">Rain Expected</small>
-            </div>
-          </div>
-        </section>
       </div>
     </main>
   </div>
 
-  <script>
-    const CITY = "Bhimtal";
-    const API_KEY = "bd5e378503939ddaee76f12ad7a97608";
-    async function fetchWeather() {
-      try {
-        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${CITY}&units=metric&appid=${API_KEY}`);
-        const data = await res.json();
-        if (data.main) {
-          document.getElementById('temp').innerText = `${Math.round(data.main.temp)}°C`;
-          document.getElementById('condition').innerText = data.weather[0].description;
-          document.getElementById('humidity').innerText = `${data.main.humidity}%`;
-          document.getElementById('wind').innerText = `${data.wind.speed} km/h`;
-        }
-      } catch (err) { console.log(err); }
-    }
-    fetchWeather();
-  </script>
+  <script src="weather.js"></script>
 </body>
 </html>
