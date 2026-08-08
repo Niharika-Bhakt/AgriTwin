@@ -1,108 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Agriculture Service - AgriTwin AI</title>
+  <link rel="stylesheet" href="service.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
 
-    <title>Farm Services | AgriTwin AI</title>
+  <div class="booking-container">
+    <a href="index.html" class="back-home"><i class="ri-arrow-left-line"></i> Back to Home</a>
+    
+    <div class="booking-header">
+      <h2>🌾 AgriTwin Service Booking</h2>
+      <p>Fill out the details below to book verified agricultural experts, machinery, or drone services for your farm.</p>
+    </div>
 
-    <link rel="stylesheet" href="service.css" />
-
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-  </head>
-
-  <body>
-    <header>
-      <div class="navbar">
-        <div class="logo">
-          <img src="assets/logoagri.jpeg" alt="Logo" />
-
-          <h2>AgriTwin AI</h2>
-        </div>
-
-        <a href="dashboard.html" class="back">
-          <i class="ri-arrow-left-line"></i>
-
-          Dashboard
-        </a>
-      </div>
-    </header>
-
-    <section class="hero">
-      <h1>Book Agriculture Services 🚜</h1>
-
-      <p>Select the service you need for your farm.</p>
-    </section>
-
-    <section class="services">
-      <div class="service-card">
-        <i class="ri-truck-line"></i>
-
-        <h3>Tractor Rental</h3>
-
-        <p>Book modern tractors for farming.</p>
-
-        <button>Book Now</button>
+    <form id="serviceBookingForm">
+      <div class="form-group">
+        <label for="farmerName">Farmer Name</label>
+        <input type="text" id="farmerName" placeholder="Enter your full name" required>
       </div>
 
-      <div class="service-card">
-        <i class="ri-drone-line"></i>
-
-        <h3>Drone Spraying</h3>
-
-        <p>AI-powered pesticide spraying.</p>
-
-        <button>Book Now</button>
+      <div class="form-group">
+        <label for="farmerPlace">Place / Village / Location</label>
+        <input type="text" id="farmerPlace" placeholder="Enter your farm location" required>
       </div>
 
-      <div class="service-card">
-        <i class="ri-user-star-line"></i>
-
-        <h3>Farm Expert</h3>
-
-        <p>Consult verified agriculture experts.</p>
-
-        <button>Book Now</button>
+      <div class="form-group">
+        <label for="serviceType">Select Agriculture Service</label>
+        <select id="serviceType" required>
+          <option value="" disabled selected>-- Choose a Service --</option>
+          <option value="Spray Experts">Spray Experts (Crop Spraying & Management)</option>
+          <option value="Drone Services">Drone Services (Monitoring & Spraying)</option>
+          <option value="Farm Equipment">Farm Equipment (Tractors & Harvesters Rental)</option>
+          <option value="Soil Testing">Soil Testing & AI Nutrient Analysis</option>
+        </select>
       </div>
 
-      <div class="service-card">
-        <i class="ri-test-tube-line"></i>
-
-        <h3>Soil Testing</h3>
-
-        <p>Know your soil quality and nutrients.</p>
-
-        <button>Book Now</button>
+      <div class="form-group">
+        <label for="contactNumber">Contact Number</label>
+        <input type="tel" id="contactNumber" placeholder="Enter your 10-digit mobile number" pattern="[0-9]{10}" required>
       </div>
 
-      <div class="service-card">
-        <i class="ri-seedling-line"></i>
+      <button type="submit" class="btn-submit">Book Service Now <i class="ri-check-line"></i></button>
+    </form>
+  </div>
 
-        <h3>Seed Supplier</h3>
+  <!-- Success Popup Modal -->
+  <div class="modal" id="successModal">
+    <div class="modal-content">
+      <i class="ri-checkbox-circle-fill" style="font-size: 50px; color: #4ade80;"></i>
+      <h3>Service Booked Successfully!</h3>
+      <p id="agentDetailsText">Your service request has been registered. Our local field expert will contact you shortly.</p>
+      <button class="btn-close" onclick="closeModal()">Done</button>
+    </div>
+  </div>
 
-        <p>Purchase certified quality seeds.</p>
-
-        <button>Book Now</button>
-      </div>
-
-      <div class="service-card">
-        <i class="ri-drop-line"></i>
-
-        <h3>Irrigation Support</h3>
-
-        <p>Book irrigation and water management services.</p>
-
-        <button>Book Now</button>
-      </div>
-    </section>
-
-    <footer>
-      <p>© 2026 AgriTwin AI | Smart Farming Solutions 🌱</p>
-    </footer>
-
-    <script src="service.js"></script>
-  </body>
+  <script src="service.js"></script>
+</body>
 </html>

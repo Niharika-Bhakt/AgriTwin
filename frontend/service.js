@@ -1,37 +1,26 @@
-const serviceForm = document.getElementById('serviceForm');
+document.getElementById('serviceBookingForm').addEventListener('submit', function(e) {
+  e.preventDefault();
 
-if (serviceForm) {
-  serviceForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
+  const name = document.getElementById('farmerName').value.trim();
+  const place = document.getElementById('farmerPlace').value.trim();
+  const service = document.getElementById('serviceType').value;
+  const phone = document.getElementById('contactNumber').value.trim();
 
-    const user = JSON.parse(localStorage.getItem('user')) || {};
-    const serviceType = document.getElementById('serviceType')?.value || 'General';
-    const details = document.getElementById('details')?.value || document.getElementById('message')?.value || '';
+  // Simulated Agent Assignment
+  const agentName = "Ramesh Kumar (District Expert)";
+  const agentPhone = "+91 9876543210";
 
-    try {
-      const response = await fetch('http://127.0.0.1:5000/api/services', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userId: user.id || 'Guest',
-          userName: user.name || document.getElementById('name')?.value || 'Guest User',
-          userEmail: user.email || document.getElementById('email')?.value || 'guest@example.com',
-          serviceType,
-          details
-        })
-      });
+  // Set popup text dynamically with agent info
+  const detailsText = `Thank you <b>${name}</b> from <b>${place}</b>.<br>Your request for <b>${service}</b> is confirmed!<br><br><b>Assigned Agent:</b> ${agentName}<br><b>Agent Contact:</b> ${agentPhone}`;
+  
+  document.getElementById('agentDetailsText').innerHTML = detailsText;
+  
+  // Show modal popup
+  document.getElementById('successModal').style.display = 'flex';
+});
 
-      const data = await response.json();
-
-      if (response.ok) {
-        alert(data.message);
-        serviceForm.reset();
-      } else {
-        alert(data.message || 'Failed to submit service request.');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('Server connection error!');
-    }
-  });
+function closeModal() {
+  document.getElementById('successModal').style.display = 'none';
+  document.getElementById('serviceBookingForm').reset();
+  window.location.href = 'index.html'; // Redirect back to home after closing
 }
