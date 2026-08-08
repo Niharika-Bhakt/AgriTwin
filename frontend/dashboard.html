@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | AgriTwin AI</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fa-solid fa-leaf"></i> AgriTwin <span>AI</span>
+    </div>
+    <div class="user-profile">
+      <span id="welcomeUser">Welcome, Farmer 🌾</span>
+      <button id="logoutBtn" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="dashboard-container">
+    
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+      <div class="hero-text">
+        <h1>Smart Farming & Specialist Services</h1>
+        <p>Book verified agriculture experts, drone sprays, harvesting machinery, and soil testing with a single click.</p>
+      </div>
+      <button id="bookServiceBtn" class="primary-btn"><i class="fa-solid fa-calendar-check"></i> Book A Service Now</button>
+    </div>
+
+    <!-- Stats Quick Cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <i class="fa-solid fa-cloud-sun weather-icon"></i>
+        <div>
+          <h4>Weather Today</h4>
+          <p>28°C / Sunny</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <i class="fa-solid fa-seedling crop-icon"></i>
+        <div>
+          <h4>Crop Health Status</h4>
+          <p class="status-good">Optimal (94%)</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <i class="fa-solid fa-tractor service-icon"></i>
+        <div>
+          <h4>Active Services</h4>
+          <p id="activeServicesCount">1 Pending Request</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Specialist Services Showcase Grid -->
+    <h2 class="section-title">Our Specialist Services</h2>
+    <div class="services-grid">
+      
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-spray-can-sparkles"></i></div>
+        <h3>Drone & Manual Spraying</h3>
+        <p>Pesticide, fungicide, and liquid fertilizer spraying by certified experts using advanced drones.</p>
+        <button class="select-service-btn" data-service="Pesticide & Spraying Service">Book Spraying</button>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-scissors"></i></div>
+        <h3>Pruning & Crop Cutting</h3>
+        <p>Professional crop trimming, fruit tree pruning, and harvesting experts for maximum yield.</p>
+        <button class="select-service-btn" data-service="Crop Cutting & Pruning">Book Pruning</button>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-vial"></i></div>
+        <h3>Soil & Water Testing</h3>
+        <p>Doorstep soil sampling and lab analysis to identify NPK deficit and organic carbon levels.</p>
+        <button class="select-service-btn" data-service="Soil & Water Testing">Book Testing</button>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-bug"></i></div>
+        <h3>Pest & Disease Control</h3>
+        <p>On-field inspection by agronomists to diagnose crop disease and provide remedy solutions.</p>
+        <button class="select-service-btn" data-service="Pest & Disease Control">Book Inspection</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BOOK SERVICE MODAL POPUP -->
+  <div id="serviceModal" class="modal-backdrop" style="display: none;">
+    <div class="modal-box">
+      
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-tractor"></i> Book Specialist Service</h3>
+        <button id="closeModalBtn" class="close-btn">&times;</button>
+      </div>
+
+      <form id="dashboardServiceForm" class="modal-body">
+        
+        <label for="modalName">Farmer Name</label>
+        <input type="text" id="modalName" placeholder="Enter your name" required />
+
+        <label for="modalServiceType">Select Specialist Service</label>
+        <select id="modalServiceType" required>
+          <option value="">-- Choose Required Service --</option>
+          <option value="Pesticide & Spraying Service">🚁 Pesticide & Drone Spraying</option>
+          <option value="Crop Cutting & Pruning">✂️ Crop Cutting & Pruning Specialist</option>
+          <option value="Soil & Water Testing">🧪 Doorstep Soil & Water Testing</option>
+          <option value="Pest & Disease Control">🐛 Pest & Disease Control Specialist</option>
+          <option value="Harvester & Machinery Rental">🚜 Machinery & Harvester Booking</option>
+          <option value="Irrigation Setup & Repair">💧 Drip / Sprinkler Irrigation Setup</option>
+        </select>
+
+        <label for="modalDetails">Farm Location & Service Details</label>
+        <textarea id="modalDetails" rows="3" placeholder="Apne khet ki location, acres, aur zarurat yahan likhein..." required></textarea>
+
+        <button type="submit" class="submit-modal-btn">Confirm Service Booking 🌾</button>
+
+      </form>
+    </div>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

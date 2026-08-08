@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Login | AgriTwin AI</title>
+
+    <link rel="stylesheet" href="login.css" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="login-container">
+      <a href="index.html" class="back-home">
+        <i class="ri-arrow-left-line"></i>
+        Back to Home
+      </a>
+
+      <div class="login-image">
+        <img src="assets/farm.jpeg" alt="Smart Farm" />
+
+        <div class="image-overlay">
+          <span class="ai-badge">
+            <i class="ri-ai-generate"></i>
+            AI Powered Farming
+          </span>
+
+          <h2>Smart Farming With Artificial Intelligence</h2>
+
+          <p>Monitor • Predict • Protect • Grow</p>
+
+          <div class="overlay-features">
+            <div class="overlay-item">
+              <i class="ri-cloud-line"></i>
+              <span>Live Weather</span>
+            </div>
+
+            <div class="overlay-item">
+              <i class="ri-plant-line"></i>
+              <span>Crop Health</span>
+            </div>
+
+            <div class="overlay-item">
+              <i class="ri-bug-line"></i>
+              <span>Disease Detection</span>
+            </div>
+
+            <div class="overlay-item">
+              <i class="ri-line-chart-line"></i>
+              <span>Market Insights</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="login-box">
+        <div class="brand">
+          <img src="assets/logoagri.jpeg" alt="AgriTwin AI Logo" />
+
+          <h1>AgriTwin AI</h1>
+
+          <p>India's Intelligent Farm Operating System</p>
+
+          <span class="version"> Version 1.0 </span>
+        </div>
+        <div class="welcome-section">
+          <span class="secure-badge">
+            <i class="ri-shield-check-line"></i>
+            AI Secure Login
+          </span>
+
+          <h2 class="welcome">Welcome Back Farmer 👋</h2>
+
+          <p class="subtitle">
+            Login to access your AI Digital Twin Dashboard and manage your farm
+            with intelligent insights.
+          </p>
+        </div>
+
+        <form id="loginForm">
+          <div class="input-box">
+            <i class="ri-mail-line"></i>
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <div class="input-box password-box">
+            <i class="ri-lock-line"></i>
+
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required
+            />
+
+            <i class="ri-eye-line toggle-password" id="togglePassword"></i>
+          </div>
+
+          <div class="remember">
+            <label>
+              <input type="checkbox" name="remember" />
+
+              Remember Me
+            </label>
+
+            <a href="#"> Forgot Password? </a>
+          </div>
+
+          <button type="submit" class="login-button">
+            Login to Dashboard
+
+            <i class="ri-arrow-right-line"></i>
+          </button>
+        </form>
+        <div class="divider">
+          <span>OR</span>
+        </div>
+
+        <button type="button" class="google-btn">
+          <i class="ri-google-fill"></i>
+
+          Continue with Google
+        </button>
+
+        <p class="signup">
+          New to AgriTwin AI?
+
+          <a href="signup.html"> Create Account </a>
+        </p>
+
+        <div class="login-footer">
+          <p>
+            By continuing, you agree to our
+
+            <a href="#">Terms of Service</a>
+
+            and
+
+            <a href="#">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="login.js"></script>
+  </body>
+</html>

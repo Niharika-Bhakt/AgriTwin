@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Signup | AgriTwin AI</title>
+
+    <link rel="stylesheet" href="signup.css" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="signup-box">
+        <img src="assets/logoagri.jpeg" class="logo" />
+
+        <h1>AgriTwin AI</h1>
+
+        <p>Create your farmer account</p>
+
+        <form id="signupForm">
+          <div class="input-box">
+            <i class="ri-user-line"></i>
+
+            <input type="text" id="name" placeholder="Full Name" required />
+          </div>
+
+          <div class="input-box">
+            <i class="ri-mail-line"></i>
+
+            <input
+              type="email"
+              id="email"
+              placeholder="Email Address"
+              required
+            />
+          </div>
+
+          <div class="input-box">
+            <i class="ri-phone-line"></i>
+
+            <input type="tel" id="phone" placeholder="Mobile Number" required />
+          </div>
+
+          <div class="input-box">
+            <i class="ri-lock-line"></i>
+
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+
+          <div class="input-box">
+            <i class="ri-lock-password-line"></i>
+
+            <input
+              type="password"
+              id="confirmPassword"
+              placeholder="Confirm Password"
+              required
+            />
+          </div>
+
+          <div class="remember">
+            <label>
+              <input type="checkbox" required />
+
+              I agree to Terms & Conditions
+            </label>
+          </div>
+
+          <button type="submit">Create Account</button>
+        </form>
+
+        <p class="login">
+          Already have an account?
+
+          <a href="login.html"> Login </a>
+        </p>
+      </div>
+    </div>
+
+    <script src="./signup.js"></script>
+  </body>
+</html>
