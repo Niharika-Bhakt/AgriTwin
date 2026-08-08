@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriTwin - Settings</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="dashboard-body">
+
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo-area">
+        <h2>🌾 AgriTwin AI</h2>
+        <p>Smart Farm Operating System</p>
+      </div>
+      <nav class="nav-links">
+        <a href="dashboard.html">📊 Dashboard</a>
+        <a href="dashboard.html">🤖 AI Advisor Chat</a>
+        <a href="weather.html">🌦️ Weather</a>
+        <a href="settings.html" class="active">⚙️ Settings</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-bar">
+        <h1>Platform Settings</h1>
+        <p>Manage your account preferences and farm location</p>
+      </header>
+
+      <div class="dashboard-container">
+        <section class="card">
+          <h3>⚙️ Farm Profile & Location</h3>
+          <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px;">
+            <div>
+              <label style="color: #a3b8b0; display: block; margin-bottom: 5px;">Farmer Name</label>
+              <input type="text" id="settingsName" value="Niharika Bhakt" style="width: 100%; padding: 10px; border-radius: 6px;">
+            </div>
+            <div>
+              <label style="color: #a3b8b0; display: block; margin-bottom: 5px;">Primary Farm Location (City/Region)</label>
+              <input type="text" id="settingsLocation" value="Bhimtal, Uttarakhand" style="width: 100%; padding: 10px; border-radius: 6px;">
+            </div>
+            <div>
+              <label style="color: #a3b8b0; display: block; margin-bottom: 5px;">Preferred Language</label>
+              <select style="width: 100%; padding: 10px; background: #080f0c; color: #fff; border: 1px solid #22382b; border-radius: 6px;">
+                <option>Hindi (हिंदी)</option>
+                <option>English</option>
+              </select>
+            </div>
+            <button onclick="saveSettings()" style="background: #00ff66; color: #0a0f0d; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 10px;">Save Changes</button>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="settings.js"></script>
+</body>
+</html>
