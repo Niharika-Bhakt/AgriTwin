@@ -190,3 +190,21 @@ window.addEventListener("scroll", () => {
 backToTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
+
+// Click-based Menu Dropdown Toggle Fix
+document.addEventListener("click", (e) => {
+  const menuDropdown = document.querySelector(".menu-dropdown");
+  const menuBtn = document.querySelector(".menu-btn");
+  
+  if (!menuDropdown) return;
+
+  // Agar user ne Menu button par click kiya hai
+  if (menuBtn && menuBtn.contains(e.target)) {
+    e.stopPropagation();
+    menuDropdown.classList.toggle("active");
+  } 
+  // Agar user ne dropdown ke andar ya baahar click kiya hai toh band kar do
+  else {
+    menuDropdown.classList.remove("active");
+  }
+});
