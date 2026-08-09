@@ -3,110 +3,274 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Agriculture Service - AgriTwin AI</title>
+  <title>AgriTwin Services</title>
+
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="service.css">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
+
 <body>
 
-  <!-- Same Navigation Bar as Home Page -->
-  <header class="navbar">
-    <div class="logo">
-      <img src="logo.png" alt="AgriTwin Logo" onerror="this.style.display='none'">
+<header class="service-nav">
+  <a href="index.html" class="brand">
+    <div class="brand-icon"><i class="ri-plant-line"></i></div>
+    <div>
+      <h2>AgriTwin AI</h2>
+      <small>Smart Farming Platform</small>
+    </div>
+  </a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#features">Features</a>
+    <a href="digital-twin.html">Digital Twin</a>
+    <a href="service.html" class="active">Services</a>
+    <a href="marketplace.html">Marketplace</a>
+  </nav>
+
+  <a href="dashboard.html" class="nav-btn">Dashboard →</a>
+</header>
+
+
+<main class="service-page">
+
+  <!-- HERO -->
+  <section class="service-hero">
+    <span class="hero-badge">
+      <i class="ri-shield-check-line"></i> Verified Agriculture Services
+    </span>
+
+    <h1>
+      Farming Ka Kaam,<br>
+      <span>Experts Ke Saath.</span>
+    </h1>
+
+    <p>
+      Drone, spraying, equipment aur soil testing jaise farming services
+      apne farm ke liye ghar baithe book karein.
+    </p>
+
+    <div class="trust-row">
+      <span><i class="ri-verified-badge-line"></i> Verified Experts</span>
+      <span><i class="ri-map-pin-line"></i> Nearby Providers</span>
+      <span><i class="ri-time-line"></i> Easy Booking</span>
+    </div>
+  </section>
+
+
+  <!-- SERVICES -->
+  <section class="service-box">
+
+    <div class="section-heading">
       <div>
-        <h2>AgriTwin AI</h2>
-        <p>India's Intelligent Farm Operating System</p>
+        <span>STEP 01</span>
+        <h2>Apko Kaunsi Service Chahiye?</h2>
       </div>
+      <p>Select one service</p>
     </div>
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="index.html#features">Features</a>
-      <a href="index.html#digitaltwin">Digital Twin</a>
-      <a href="service.html" class="active">Services</a>
-      <a href="index.html#market">Market</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
-    <div class="nav-actions">
-      <span class="ai-online"><span class="dot"></span> AI Online</span>
-      <a href="login.html" class="login-btn"><i class="ri-user-line"></i> Login</a>
-      <button class="menu-btn">Menu <i class="ri-menu-line"></i></button>
-      <a href="dashboard.html" class="cta-btn">Start Monitoring →</a>
-    </div>
-  </header>
 
-  <!-- Main Booking Section -->
-  <main class="booking-main">
-    <div class="booking-container">
-      
-      <div class="booking-header">
-        <h2>Uber For <span>Agriculture</span></h2>
-        <p>Select a service below, enter your details, and book verified agriculture experts instantly.</p>
+    <div class="services-grid">
+
+      <div class="service-card" onclick="selectService('Crop Spraying',this)">
+        <div class="service-icon"><i class="ri-leaf-line"></i></div>
+        <h3>Crop Spraying</h3>
+        <p>Professional pesticide & fertilizer spraying.</p>
+        <b>From ₹500</b>
       </div>
 
-      <!-- Service Cards Selection Grid -->
-      <div class="services-grid">
-        <div class="service-option-card" onclick="selectService('Spray Experts', this)">
+      <div class="service-card" onclick="selectService('Drone Monitoring',this)">
+        <div class="service-icon"><i class="ri-drone-line"></i></div>
+        <h3>Drone Monitoring</h3>
+        <p>AI-based crop monitoring & field inspection.</p>
+        <b>From ₹800</b>
+      </div>
+
+      <div class="service-card" onclick="selectService('Farm Equipment',this)">
+        <div class="service-icon"><i class="ri-tractor-line"></i></div>
+        <h3>Farm Equipment</h3>
+        <p>Tractor, harvester and equipment rental.</p>
+        <b>From ₹1,200</b>
+      </div>
+
+      <div class="service-card" onclick="selectService('Soil Testing',this)">
+        <div class="service-icon"><i class="ri-test-tube-line"></i></div>
+        <h3>Soil Testing</h3>
+        <p>Know your soil health and nutrient requirements.</p>
+        <b>From ₹300</b>
+      </div>
+
+    </div>
+
+
+    <!-- BOOKING FORM -->
+    <div class="booking-area">
+
+      <div class="booking-form">
+
+        <div class="section-heading">
+          <div>
+            <span>STEP 02</span>
+            <h2>Apne Farm Ki Details Dein</h2>
+          </div>
+        </div>
+
+        <form id="bookingForm">
+
+          <input type="hidden" id="selectedService">
+
+          <div class="input-row">
+
+            <div>
+              <label>Farmer Name</label>
+              <input id="farmerName" type="text" placeholder="e.g. Ramesh Kumar" required>
+            </div>
+
+            <div>
+              <label>Mobile Number</label>
+              <input id="phone" type="tel"
+                     placeholder="10-digit mobile number"
+                     pattern="[0-9]{10}" required>
+            </div>
+
+          </div>
+
+
+          <div class="input-row">
+
+            <div>
+              <label>Village / Location</label>
+              <input id="location" type="text"
+                     placeholder="e.g. Bhimtal, Uttarakhand" required>
+            </div>
+
+            <div>
+              <label>Farm Size</label>
+              <select id="farmSize">
+                <option value="1">Up to 1 Acre</option>
+                <option value="2">1–2 Acres</option>
+                <option value="5">2–5 Acres</option>
+                <option value="10">5+ Acres</option>
+              </select>
+            </div>
+
+          </div>
+
+
+          <div class="input-row">
+
+            <div>
+              <label>Preferred Date</label>
+              <input id="date" type="date" required>
+            </div>
+
+            <div>
+              <label>Preferred Time</label>
+              <select id="time">
+                <option>Morning (7 AM – 11 AM)</option>
+                <option>Afternoon (12 PM – 3 PM)</option>
+                <option>Evening (4 PM – 7 PM)</option>
+              </select>
+            </div>
+
+          </div>
+
+
+          <div class="price-preview">
+            <div>
+              <small>Selected Service</small>
+              <strong id="selectedText">Please select a service</strong>
+            </div>
+
+            <div>
+              <small>Estimated Cost</small>
+              <strong id="estimatedPrice">₹0</strong>
+            </div>
+          </div>
+
+
+          <button class="book-btn" type="submit">
+            <i class="ri-calendar-check-line"></i>
+            Find & Book Nearby Expert
+          </button>
+
+        </form>
+      </div>
+
+
+      <!-- RIGHT INFO -->
+      <aside class="expert-card">
+
+        <div class="expert-top">
+          <span class="live-dot"></span>
+          <span>AgriTwin Network</span>
+        </div>
+
+        <div class="expert-avatar">
           <i class="ri-user-star-line"></i>
-          <h3>Spray Experts</h3>
-          <p>Book verified professionals for crop spraying & field management.</p>
         </div>
 
-        <div class="service-option-card" onclick="selectService('Drone Services', this)">
-          <i class="ri-drone-line"></i>
-          <h3>Drone Services</h3>
-          <p>Get drone-based crop monitoring and spraying solutions.</p>
+        <h3>Verified Local Experts</h3>
+
+        <p>
+          AgriTwin automatically helps you find available
+          service providers near your farm.
+        </p>
+
+        <div class="expert-feature">
+          <i class="ri-shield-check-line"></i>
+          <span>Verified Professionals</span>
         </div>
 
-        <div class="service-option-card" onclick="selectService('Farm Equipment', this)">
-          <i class="ri-truck-line"></i>
-          <h3>Farm Equipment</h3>
-          <p>Rent tractors, harvesters and modern farming equipment with ease.</p>
+        <div class="expert-feature">
+          <i class="ri-map-pin-2-line"></i>
+          <span>Nearest Provider Matching</span>
         </div>
 
-        <div class="service-option-card" onclick="selectService('Soil Testing', this)">
-          <i class="ri-test-tube-line"></i>
-          <h3>Soil Testing</h3>
-          <p>Analyze soil quality and receive AI-powered farming recommendations.</p>
-        </div>
-      </div>
-
-      <!-- Booking Input Form -->
-      <form id="serviceBookingForm">
-        <input type="hidden" id="selectedServiceInput" required>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="farmerName">Farmer Name</label>
-            <input type="text" id="farmerName" placeholder="Enter your full name" required>
-          </div>
-
-          <div class="form-group">
-            <label for="farmerPlace">Place / Village / Location</label>
-            <input type="text" id="farmerPlace" placeholder="Enter your farm location" required>
-          </div>
+        <div class="expert-feature">
+          <i class="ri-wallet-3-line"></i>
+          <span>Transparent Estimated Cost</span>
         </div>
 
-        <div class="form-group">
-          <label for="contactNumber">Contact Number</label>
-          <input type="tel" id="contactNumber" placeholder="Enter your 10-digit mobile number" pattern="[0-9]{10}" required>
+        <div class="expert-feature">
+          <i class="ri-customer-service-2-line"></i>
+          <span>Booking Support</span>
         </div>
 
-        <button type="submit" class="btn-submit">Book Selected Service Now <i class="ri-check-line"></i></button>
-      </form>
+      </aside>
+
     </div>
-  </main>
 
-  <!-- Success Popup Modal -->
-  <div class="modal" id="successModal">
-    <div class="modal-content">
-      <i class="ri-checkbox-circle-fill" style="font-size: 50px; color: #4ade80;"></i>
-      <h3>Service Booked Successfully!</h3>
-      <p id="agentDetailsText">Your service request has been registered. Our local field expert will contact you shortly.</p>
-      <button class="btn-close" onclick="closeModal()">Done</button>
+  </section>
+
+</main>
+
+
+<!-- SUCCESS MODAL -->
+<div class="modal" id="successModal">
+  <div class="modal-card">
+
+    <div class="success-icon">
+      <i class="ri-check-line"></i>
     </div>
+
+    <h2>Booking Request Sent!</h2>
+
+    <p id="bookingMessage"></p>
+
+    <div class="booking-status">
+      <span>✓ Request Received</span>
+      <span>✓ Expert Matching</span>
+      <span>● Provider Will Contact You</span>
+    </div>
+
+    <button onclick="closeModal()">Done</button>
+
   </div>
+</div>
 
-  <script src="service.js"></script>
+
+<script src="service.js"></script>
+
 </body>
 </html>

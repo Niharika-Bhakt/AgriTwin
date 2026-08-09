@@ -1,47 +1,99 @@
-let chosenService = "";
+let selectedService = "";
+let basePrice = 0;
 
-function selectService(serviceName, cardElement) {
-  chosenService = serviceName;
-  document.getElementById('selectedServiceInput').value = serviceName;
+const prices = {
+  "Crop Spraying": 500,
+  "Drone Monitoring": 800,
+  "Farm Equipment": 1200,
+  "Soil Testing": 300
+};
 
-  // Remove 'selected' class from all cards
-  const cards = document.querySelectorAll('.service-option-card');
-  cards.forEach(card => card.classList.remove('selected'));
+function selectService(service, card){
 
-  // Add 'selected' class to the clicked card
-  cardElement.classList.add('selected');
+  selectedService = service;
+  basePrice = prices[service];
+
+  document.querySelectorAll(".service-card")
+    .forEach(c => c.classList.remove("selected"));
+
+  card.classList.add("selected");
+
+  document.getElementById("selectedService").value = service;
+  document.getElementById("selectedText").innerText = service;
+
+  calculatePrice();
 }
 
-document.getElementById('serviceBookingForm').addEventListener('submit', function(e) {
-  e.preventDefault();
 
-  const name = document.getElementById('farmerName').value.trim();
-  const place = document.getElementById('farmerPlace').value.trim();
-  const service = document.getElementById('selectedServiceInput').value;
-  const phone = document.getElementById('contactNumber').value.trim();
+function calculatePrice(){
 
-  if (!service) {
-    alert('Please click and select a service card above first!');
-    return;
+  const acres = Number(document.getElementById("farmSize").value);
+
+  if(!selectedService) return;
+
+  const price = basePrice * acres;
+
+  document.getElementById("estimatedPrice").innerText =
+    "₹" + price.toLocaleString();
+}
+
+
+document.getElementById("farmSize").addEventListener(
+  "change",
+  calculatePrice
+);
+
+
+document.getElementById("bookingForm").addEventListener(
+  "submit",
+  function(e){
+
+    e.preventDefault();
+
+    if(!selectedService){
+      alert("Please select a service first.");
+      return;
+    }
+
+    const name =
+      document.getElementById("farmerName").value.trim();
+
+    const location =
+      document.getElementById("location").value.trim();
+
+    const date =
+      document.getElementById("date").value;
+
+    const price =
+      document.getElementById("estimatedPrice").innerText;
+
+    document.getElementById("bookingMessage").innerHTML =
+      `Thank you <b>${name}</b>!<br><br>
+       Your <b>${selectedService}</b> request for
+       <b>${location}</b> has been received.<br><br>
+       Estimated cost: <b>${price}</b><br>
+       Preferred date: <b>${date}</b><br><br>
+       AgriTwin will help find a nearby verified service provider.`;
+
+    document.getElementById("successModal").style.display = "flex";
   }
+);
 
-  // Simulated Agent Assignment details
-  const agentName = "Ramesh Kumar (District Expert)";
-  const agentPhone = "+91 9876543210";
 
-  // Set popup text dynamically
-  const detailsText = `Thank you <b>${name}</b> from <b>${place}</b>.<br>Your booking for <b>${service}</b> is confirmed!<br><br><b>Assigned Agent:</b> ${agentName}<br><b>Agent Contact:</b> ${agentPhone}`;
-  
-  document.getElementById('agentDetailsText').innerHTML = detailsText;
-  
-  // Show modal popup
-  document.getElementById('successModal').style.display = 'flex';
-});
+function closeModal(){
 
-function closeModal() {
-  document.getElementById('successModal').style.display = 'none';
-  document.getElementById('serviceBookingForm').reset();
-  document.querySelectorAll('.service-option-card').forEach(card => card.classList.remove('selected'));
-  chosenService = "";
-  window.location.href = 'index.html'; // Redirect back to home after closing
+  document.getElementById("successModal").style.display = "none";
+
+  document.getElementById("bookingForm").reset();
+
+  document.querySelectorAll(".service-card")
+    .forEach(c => c.classList.remove("selected"));
+
+  selectedService = "";
+  basePrice = 0;
+
+  document.getElementById("selectedText").innerText =
+    "Please select a service";
+
+  document.getElementById("estimatedPrice").innerText = "₹0";
 }
