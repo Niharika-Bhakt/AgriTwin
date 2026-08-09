@@ -3,228 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farmer Command Center - AgriTwin AI</title>
-    <!-- Favicon -->
+
+    <title>Farmer Command Center | AgriTwin AI</title>
+
     <link rel="icon" type="image/png" href="assets/favicon.png">
+
     <!-- Remix Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <!-- Main Stylesheet -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+        rel="stylesheet"
+    >
+
+    <!-- Dashboard CSS -->
     <link rel="stylesheet" href="dashboard.css">
 </head>
+
 <body>
 
-    <div class="dashboard-container">
-        <!-- Header / Sidebar -->
-        <nav class="sidebar">
-            <div class="sidebar-header">
-                <h2><i class="ri-leaf-fill"></i> AgriTwin AI</h2>
-            </div>
-            <ul class="nav-links">
-                <li class="active"><a href="dashboard.html"><i class="ri-dashboard-line"></i> Dashboard</a></li>
-                <li><a href="marketplace.html"><i class="ri-store-2-line"></i> Marketplace</a></li>
-                <li><a href="services.html"><i class="ri-service-line"></i> Farm Services</a></li>
-                <li><a href="settings.html"><i class="ri-settings-4-line"></i> Settings</a></li>
-            </ul>
-            <div class="logout-section">
-                <button id="logoutBtn" class="btn-logout"><i class="ri-logout-box-line"></i> Logout</button>
-            </div>
-        </nav>
+<div class="dashboard-container">
 
-        <!-- Main Content Area -->
-        <main class="main-content">
-            <header class="content-header">
-                <div class="header-text">
-                    <h1>Farmer Command Center</h1>
-                    <p>Welcome back, <span id="userNameDisplay">Farmer</span>! Here is your AI-powered farm intelligence.</p>
-                </div>
-                <div class="header-actions">
-                    <button class="btn-primary"><i class="ri-notification-3-line"></i> Alerts</button>
-                </div>
-            </header>
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+    <aside class="sidebar" id="sidebar">
 
-            <!-- LIVE MARKET PRICES SECTION (Formal & Important) -->
-            <section class="dashboard-section market-section">
-                <div class="section-title">
-                    <h3><i class="ri-line-chart-line"></i> Live Mandi Prices (Today)</h3>
-                    <small>Data from major markets</small>
+        <div class="sidebar-header">
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="ri-leaf-fill"></i>
                 </div>
-                <div class="market-grid">
-                    <div class="market-card wheat">
-                        <h4>Wheat (गेहूं)</h4>
-                        <div class="price-info">
-                            <span class="price">₹2,450</span>
-                            <span class="unit">/ Quintal</span>
-                        </div>
-                        <span class="trend up">▲ +1.5%</span>
-                    </div>
-                    <div class="market-card rice">
-                        <h4>Paddy / Rice (धान)</h4>
-                        <div class="price-info">
-                            <span class="price">₹2,200</span>
-                            <span class="unit">/ Quintal</span>
-                        </div>
-                        <span class="trend up">▲ +0.8%</span>
-                    </div>
-                    <div class="market-card potato">
-                        <h4>Potato (आलू)</h4>
-                        <div class="price-info">
-                            <span class="price">₹1,350</span>
-                            <span class="unit">/ Quintal</span>
-                        </div>
-                        <span class="trend down">▼ -0.5%</span>
-                    </div>
-                    <div class="market-card mustard">
-                        <h4>Mustard (सरसों)</h4>
-                        <div class="price-info">
-                            <span class="price">₹5,600</span>
-                            <span class="unit">/ Quintal</span>
-                        </div>
-                        <span class="trend up">▲ +2.1%</span>
-                    </div>
-                </div>
-            </section>
 
-            <!-- QUICK STATS OVERVIEW -->
-            <section class="dashboard-section stats-section">
-                <div class="stat-card health">
-                    <i class="ri-plant-line icon"></i>
-                    <div class="stat-data">
-                        <h4>Crop Health</h4>
-                        <h2>86%</h2>
-                        <p>Excellent Condition</p>
-                    </div>
+                <div>
+                    <h2>AgriTwin AI</h2>
+                    <span>Smart Farm OS</span>
                 </div>
-                <div class="stat-card moisture">
-                    <i class="ri-water-percent-line icon"></i>
-                    <div class="stat-data">
-                        <h4>Soil Moisture</h4>
-                        <h2>42%</h2>
-                        <p>Optimal Level</p>
-                    </div>
-                </div>
-                <div class="stat-card risk">
-                    <i class="ri-error-warning-line icon"></i>
-                    <div class="stat-data">
-                        <h4>Farm Risk</h4>
-                        <h2>18%</h2>
-                        <p>Low Risk Detected</p>
-                    </div>
-                </div>
-                <div class="stat-card yield">
-                    <i class="ri-bar-chart-box-line icon"></i>
-                    <div class="stat-data">
-                        <h4>Expected Yield</h4>
-                        <h2>4.8 T/Ha</h2>
-                        <p>+12% vs Last Season</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- AI CROP DISEASE DIAGNOSTIC & YIELD PREDICTION -->
-            <div class="grid-2col">
-                <!-- Diagnostic Section (FIXED: Clickable & Upload) -->
-                <section class="card diagnostic-card">
-                    <div class="card-header">
-                        <h3><i class="ri-ai-generate"></i> AI Crop Disease Diagnostic</h3>
-                        <p>Upload a crop image for instant AI-based analysis.</p>
-                    </div>
-                    
-                    <!-- Clickable Upload Box -->
-                    <div class="upload-box" id="uploadBoxTrigger">
-                        <i class="ri-folder-upload-line upload-icon"></i>
-                        <p id="uploadText">Click to upload crop image</p>
-                        <!-- Hidden File Input -->
-                        <input type="file" id="cropImageInput" accept="image/*" hidden>
-                    </div>
-
-                    <button id="analyzeBtn" class="btn-primary btn-full-width" disabled>
-                        <i class="ri-search-eye-line"></i> Analyze Crop
-                    </button>
-                </section>
-
-                <!-- Yield Prediction Section -->
-                <section class="card yield-card">
-                    <div class="card-header">
-                        <h3><i class="ri-funds-line"></i> AI Yield Prediction</h3>
-                        <p>Current seasonal harvest forecast.</p>
-                    </div>
-                    <div class="yield-details">
-                        <div class="main-metric">
-                            <h1>4.8 Tons</h1>
-                            <small>Expected Net Harvest</small>
-                        </div>
-                        <div class="comparison-metric">
-                            <p>▲ 12% compared to last season.</p>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 88%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
             </div>
 
-            <!-- WEATHER & FINANCIAL OVERVIEW -->
-            <div class="grid-2col">
-                <section class="card weather-card">
-                    <div class="card-header">
-                        <h3><i class="ri-sun-cloudy-line"></i> Live Farm Weather</h3>
-                        <p>Based on your farm location.</p>
-                    </div>
-                    <div class="weather-display">
-                        <div class="temp">
-                            <h1>22°C</h1>
-                            <p>Clear Sky</p>
-                        </div>
-                        <div class="weather-details">
-                            <p>Humidity: 65%</p>
-                            <p>Wind: 5.2 km/h</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="card finance-card">
-                    <div class="card-header">
-                        <h3><i class="ri-money-rupee-circle-line"></i> Financial Overview (Week)</h3>
-                        <p>Total Revenue vs Expenses.</p>
-                    </div>
-                    <div class="finance-stats">
-                        <div class="stat-box revenue">
-                            <small>Revenue</small>
-                            <h3>₹12,500</h3>
-                        </div>
-                        <div class="stat-box expense">
-                            <small>Expenses</small>
-                            <h3>₹3,200</h3>
-                        </div>
-                        <div class="stat-box profit">
-                            <small>Net Profit</small>
-                            <h3 class="text-success">₹9,300</h3>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </main>
-    </div>
-
-    <!-- AI ANALYSIS RESULT POPUP (New) -->
-    <div class="modal-overlay" id="analysisModal" hidden>
-        <div class="modal-content">
-            <button class="modal-close" id="closeModalBtn">&times;</button>
-            <h3>AI Diagnostic Report</h3>
-            <hr class="divider">
-            <div class="modal-body" id="reportContent">
-                <!-- Content will be injected by JS -->
-                <div class="loading-spinner"></div>
-                <p>Analyzing Image...</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-secondary" id="printReportBtn">Print Report</button>
-                <button class="btn-primary" id="consultExpertBtn">Consult Expert</button>
-            </div>
+            <button class="mobile-close" id="closeSidebar">
+                <i class="ri-close-line"></i>
+            </button>
         </div>
-    </div>
 
-    <!-- Main JS File -->
-    <script src="dashboard.js"></script>
-</body>
-</html>
+        <div class="sidebar-menu">
+
+            <p class="menu-label">MAIN</p>
+
+            <ul class="nav-links">
+
+                <li class="active">
+                    <a href="dashboard.html">
+                        <i class="ri-dashboard-3-line"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#farm-health">
+                        <i class="ri-plant-line"></i>
+                        <span>Farm Health</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#crop-analysis">
+                        <i class="ri-ai-generate"></i>
+                        <span>AI Diagnosis</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#weather">
+                        <i class="ri-cloudy-2-line"></i>
+                        <span>Weather</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="marketplace.html">
+                        <i class="ri-store-2-line"></i>
+                        <span>Marketplace</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="services.html">
+                        <i class="ri-service-line"></i>
+                        <span>Farm Services</span>
+                    </a>
+                </li>
+
+            </ul>
+
+            <p class="menu-label">MANAGE</p>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="#recommendations">
+                        <i class="ri-lightbulb-line"></i>
+                        <span>AI Recommendations</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#finance">
+                        <i class="ri-money-rupee-circle-line"></i>
+                        <span>Farm Finance</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="settings.html">
+                        <i class="ri-settings-4-line"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <!-- Sidebar Bottom -->
+        <div class="sidebar-bottom">
+
+            <div class="support-card">
+                <div class="support-icon">
+                    <i class="ri-customer-service-2-line"></i>
+                </div>
+
+                <div>
+                    <strong>Need Help?</strong>
+                    <p>Talk to a farm expert</p>
+                </div>
+
+                <button id="expertSidebarBtn">
+                    <i class="ri-arrow-right-line"></i>
+                </button>
+            </div>
+
+            <button class="logout-btn" id="logoutBtn">
+                <i class="ri-logout-box-r-line"></i>
+                <span>Logout</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+    <main class="main-content">
+
+        <!-- TOP HEADER -->
+        <header class="top-header">
+
+            <button class="mobile-menu" id="openSidebar">
+                <i class="ri-menu-line"></i>
+            </button>
+
+            <div class="header-title">
+
+                <div>
+                    <p class="welcome-label">FARM COMMAND CENTER</p>
+
+                    <h1>
+                        Welcome back,
+                        <span id="userNameDisplay">Farmer</span> 👋
+                    </h1>
+
+                    <p class="header-subtitle">
+                        Your farm intelligence at a glance.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="header-actions">
+
+                <!-- Farm Status -->
+                <div class="farm-status">
+                    <span class="status-dot"></span>
+
+                    <div>
+                        <strong>Farm Online</strong>
+                        <small>Monitoring active</small>
+                    </div>
+                </div>
+
+                <!-- Notification -->
+                <button
+                    class="icon-btn notification-btn"
+                    id="notificationBtn"
+                    title="Notifications"
+                >
+                    <i class="ri-notification-3-line"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <!-- Profile -->
+                <button class="profile-btn" id="profileBtn">
+
+                    <div class="profile-avatar">
+                        <i class="ri-user-3-fill"></i>
+                    </div>
+
+                    <div class="profile-info">
