@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
@@ -9,8 +10,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// --- STATIC FRONTEND SERVING ---
+// Yeh line backend ko batati hai ki frontend folder kahan hai taaki website seedha live URL par khul sake
+app.use(express.static(path.join(__dirname, '../frontend')));
+
 // MongoDB Connection
-// Note: .env file mein MONGO_URI setup honi chahiye, ya yahan direct string daal dein
 const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/agriTwinDB";
 
 mongoose.connect(MONGO_URI)
@@ -23,7 +27,7 @@ const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   phone: { type: String, required: true },
-  password: { type: String, required: true } // Real apps mein hashing use karein
+  password: { type: String, required: true }
 });
 
 const serviceSchema = new mongoose.Schema({
@@ -46,7 +50,6 @@ app.post('/api/signup', async (req, res) => {
   try {
     const { name, email, phone, password } = req.body;
     
-    // Check if user exists
     const userExists = await User.findOne({ email });
     if (userExists) return res.status(400).json({ message: 'Email already registered!' });
 
@@ -68,7 +71,6 @@ app.post('/api/login', async (req, res) => {
       return res.status(400).json({ message: 'Invalid email or password!' });
     }
 
-    // Login success - return user details for localStorage
     res.status(200).json({
       message: 'Login Successful!',
       user: { id: user._id, name: user.name, email: user.email }
@@ -94,10 +96,15 @@ app.post('/api/services', async (req, res) => {
   }
 });
 
+// Fallback route to serve index.html for any unknown route (Single Page App style)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/index.html'));
+});
+
 // Server Start
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
 
 module.exports = app;
