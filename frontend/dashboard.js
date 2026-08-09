@@ -1,134 +1,163 @@
-// 1. Switch View between Dashboard & AI Chat
-function switchView(viewName) {
-  const dashView = document.getElementById('mainDashboardView');
-  const aiView = document.getElementById('aiAdvisorSection');
-  const navDash = document.getElementById('navDash');
-  const navAI = document.getElementById('navAI');
+/* VIEW SWITCH */
 
-  if (viewName === 'ai') {
-    dashView.style.display = 'none';
-    aiView.style.display = 'block';
-    navAI.classList.add('active');
-    navDash.classList.remove('active');
-  } else {
-    dashView.style.display = 'block';
-    aiView.style.display = 'none';
-    navDash.classList.add('active');
-    navAI.classList.remove('active');
-  }
+function switchView(view){
+  const dash=document.getElementById("mainDashboardView");
+  const ai=document.getElementById("aiAdvisorSection");
+
+  dash.style.display=view==="ai"?"none":"block";
+  ai.style.display=view==="ai"?"block":"none";
+
+  document.getElementById("navDash").classList.toggle("active",view!=="ai");
+  document.getElementById("navAI").classList.toggle("active",view==="ai");
 }
 
-// 2. Fetch Weather with Fallback Values
-const CITY_NAME = "Bhimtal";
-const WEATHER_API = "bd5e378503939ddaee76f12ad7a97608";
 
-async function loadDashboardWeather() {
-  try {
-    const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${CITY_NAME}&units=metric&appid=${WEATHER_API}`);
-    const data = await res.json();
-    
-    if (data.main) {
-      document.getElementById('dash-temp').innerText = `${Math.round(data.main.temp)}°C`;
-      document.getElementById('dash-condition').innerText = data.weather[0].description;
-      document.getElementById('dash-humidity').innerText = `${data.main.humidity}%`;
-      document.getElementById('dash-wind').innerText = `${data.wind.speed} km/h`;
+/* WEATHER */
+
+const API="bd5e378503939ddaee76f12ad7a97608";
+
+async function loadWeather(){
+
+  try{
+    const r=await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=Bhimtal&units=metric&appid=${API}`
+    );
+
+    const d=await r.json();
+
+    if(d.main){
+      document.getElementById("dash-temp").textContent=
+        Math.round(d.main.temp)+"°C";
+
+      document.getElementById("dash-condition").textContent=
+        d.weather[0].description;
+
+      document.getElementById("dash-humidity").textContent=
+        d.main.humidity+"%";
+
+      document.getElementById("dash-wind").textContent=
+        d.wind.speed+" km/h";
     }
-  } catch (err) {
-    console.log("Using default fallback weather values.");
-    document.getElementById('dash-temp').innerText = "22°C";
-    document.getElementById('dash-condition').innerText = "Clear Sky";
-    document.getElementById('dash-humidity').innerText = "65%";
-    document.getElementById('dash-wind').innerText = "5.2 km/h";
+
+  }catch(e){
+    console.log("Using demo weather data");
   }
 }
-loadDashboardWeather();
 
-// 3. Profit Chart Rendering
-window.addEventListener('DOMContentLoaded', () => {
-  const ctx = document.getElementById('profitChart');
-  if (ctx) {
-    new Chart(ctx.getContext('2d'), {
-      type: 'line',
-      data: {
-        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-        datasets: [{
-          label: 'Net Profit (₹)',
-          data: [4000, 5500, 3000, 7000, 8500, 6000, 9300],
-          borderColor: '#00ff66',
-          backgroundColor: 'rgba(0, 255, 102, 0.1)',
-          fill: true,
-          tension: 0.3
-        }]
-      },
-      options: { 
-        responsive: true, 
-        maintainAspectRatio: false,
-        scales: {
-          x: { ticks: { color: '#a3b8b0' }, grid: { color: '#22382b' } },
-          y: { ticks: { color: '#a3b8b0' }, grid: { color: '#22382b' } }
-        }
-      }
-    });
+loadWeather();
+
+
+/* PROFIT CHART */
+
+new Chart(document.getElementById("profitChart"),{
+  type:"line",
+  data:{
+    labels:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
+    datasets:[{
+      label:"Net Profit",
+      data:[4000,5500,3000,7000,8500,6000,9300],
+      borderColor:"#00ff66",
+      backgroundColor:"rgba(0,255,102,.08)",
+      fill:true,
+      tension:.4
+    }]
+  },
+  options:{
+    responsive:true,
+    maintainAspectRatio:false,
+    plugins:{legend:{labels:{color:"#9bb0a4"}}},
+    scales:{
+      x:{ticks:{color:"#9bb0a4"},grid:{color:"#203c2b"}},
+      y:{ticks:{color:"#9bb0a4"},grid:{color:"#203c2b"}}
+    }
   }
 });
 
-// 4. Image Preview & Crop Disease Diagnostic
-function previewImage(event) {
-  const reader = new FileReader();
-  const imageField = document.getElementById("imagePreview");
-  const uploadContent = document.getElementById("uploadContent");
-  const uploadZone = document.getElementById("uploadZone");
 
-  reader.onload = function() {
-    if (reader.readyState === 2) {
-      imageField.src = reader.result;
-      imageField.style.display = "block";
-      uploadContent.style.display = "none";
-      uploadZone.style.padding = "0";
-      uploadZone.style.border = "none";
-    }
-  }
-  if (event.target.files[0]) {
-    reader.readAsDataURL(event.target.files[0]);
-  }
+/* IMAGE PREVIEW */
+
+function previewImage(e){
+
+  const file=e.target.files[0];
+  if(!file)return;
+
+  const img=document.getElementById("imagePreview");
+  const text=document.getElementById("uploadContent");
+
+  img.src=URL.createObjectURL(file);
+  img.style.display="block";
+  text.style.display="none";
 }
 
-function analyzeCropDisease() {
-  const fileInput = document.getElementById('cropImg');
-  const resultDiv = document.getElementById('diseaseResult');
-  
-  if (fileInput.files.length === 0) {
-    alert('Please select a leaf image first!');
+
+/* DISEASE ANALYSIS */
+
+function analyzeCropDisease(){
+
+  const file=document.getElementById("cropImg").files[0];
+
+  if(!file){
+    alert("Please upload a crop image first!");
     return;
   }
-  resultDiv.style.display = 'block';
+
+  document.getElementById("diseaseResult").style.display="block";
 }
 
-// 5. Full-Page AI Advisor Chat Logic
-function sendFullChat() {
-  const inp = document.getElementById('fullChatInp');
-  const txt = inp.value.trim();
-  if (!txt) return;
 
-  const box = document.getElementById('fullChatMsgs');
-  box.innerHTML += `<div style="background: rgba(0,120,255,0.1); border: 1px solid #22382b; padding: 12px 16px; border-radius: 8px; max-width: 75%; align-self: flex-end; color: #fff;"><b>You:</b> ${txt}</div>`;
-  inp.value = '';
-  box.scrollTop = box.scrollHeight;
+/* AI CHAT */
 
-  setTimeout(() => {
-    let reply = "Based on standard agricultural practices, ensure proper soil moisture and nutrient levels.";
-    const lower = txt.toLowerCase();
-    if (lower.includes('wheat') || lower.includes('gehu')) reply = "For wheat crops, maintain regular light irrigation during the crown root initiation stage.";
-    if (lower.includes('price') || lower.includes('bhav')) reply = "Current market trends are stable with a potential upward shift expected next week.";
+function sendFullChat(){
 
-    box.innerHTML += `<div style="background: rgba(0,255,102,0.1); border: 1px solid #22382b; padding: 12px 16px; border-radius: 8px; max-width: 75%; align-self: flex-start; color: #fff;"><b>AgriTwin AI:</b> ${reply}</div>`;
-    box.scrollTop = box.scrollHeight;
-  }, 600);
+  const input=document.getElementById("fullChatInp");
+  const text=input.value.trim();
+
+  if(!text)return;
+
+  const box=document.getElementById("fullChatMsgs");
+
+  box.innerHTML+=`
+    <div class="user-msg">
+      <b>You</b><br>${text}
+    </div>`;
+
+  input.value="";
+  box.scrollTop=box.scrollHeight;
+
+  setTimeout(()=>{
+
+    let reply=
+      "Maintain proper irrigation, monitor soil moisture and check your crop regularly. 🌱";
+
+    const q=text.toLowerCase();
+
+    if(q.includes("wheat")||q.includes("gehu"))
+      reply="For wheat, maintain proper irrigation during the crown root initiation stage. 🌾";
+
+    else if(q.includes("price")||q.includes("bhav"))
+      reply="Market prices can vary. Check the Market section before selling your crop. 💰";
+
+    else if(q.includes("water")||q.includes("irrigation"))
+      reply="Your soil moisture is currently optimal at 42%. Next irrigation is recommended tomorrow at 7 AM. 💧";
+
+    box.innerHTML+=`
+      <div class="ai-msg">
+        <b>AgriTwin AI</b><br>${reply}
+      </div>`;
+
+    box.scrollTop=box.scrollHeight;
+
+  },600);
 }
 
-function clearChat() {
-  document.getElementById('fullChatMsgs').innerHTML = `
-    <div style="background: rgba(0,255,102,0.1); border: 1px solid #22382b; padding: 12px 16px; border-radius: 8px; max-width: 75%; align-self: flex-start; color: #fff;">
-      <b>Chat cleared!</b> How else can I help you today?
+
+/* CLEAR CHAT */
+
+function clearChat(){
+
+  document.getElementById("fullChatMsgs").innerHTML=`
+    <div class="ai-msg">
+      <b>AgriTwin AI</b><br>
+      Chat cleared! 🌱 How can I help you with your farm?
     </div>`;
 }
