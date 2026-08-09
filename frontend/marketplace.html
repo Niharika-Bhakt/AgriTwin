@@ -3,75 +3,456 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AgriTwin | Smart Marketplace</title>
+
+  <title>AgriTwin Marketplace</title>
+
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="marketplace.css">
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css">
 </head>
+
 <body>
 
-  <header class="navbar">
-    <a href="index.html" class="logo"><h2>AgriTwin AI</h2></a>
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="marketplace.html" class="active">Marketplace</a>
-      <a href="dashboard.html">Dashboard</a>
-    </nav>
-  </header>
+<header>
+  <nav class="navbar">
 
-  <main class="market-main">
-    <section class="market-hero">
-      <h1>Apni Fasal Bechein, <span class="highlight">Sahi Daam Paayein</span></h1>
-      <p>List your produce, get AI recommendations, and match with verified buyers.</p>
-      <div class="hero-btns">
-        <button class="btn-primary" onclick="openSellModal()">+ Sell Your Produce</button>
-        <button class="btn-secondary" onclick="scrollToOffers()">View Offers</button>
+    <a href="index.html" class="logo">
+      <img src="assets/logoagri.jpeg" alt="AgriTwin">
+      <div class="logo-text">
+        <h2>AgriTwin AI</h2>
+        <p>India's Intelligent Farm Operating System</p>
       </div>
-    </section>
+    </a>
 
-    <div class="market-grid" id="offersSection">
-      <div class="left-col">
-        <h2>Smart Buyer Matches</h2>
-        <div id="offersList">
-          <div class="deal-card">
-            <div class="badge">🏆 Best Deal</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#digital-twin">Digital Twin</a></li>
+      <li><a href="service.html">Services</a></li>
+      <li><a href="marketplace.html" class="active">Marketplace</a></li>
+    </ul>
+
+    <button class="dashboard-btn"
+      onclick="location.href='dashboard.html'">
+      Dashboard
+    </button>
+
+  </nav>
+</header>
+
+
+<main class="marketplace">
+
+  <!-- HERO -->
+
+  <section class="market-hero">
+
+    <span class="tag">
+      <i class="ri-store-2-line"></i>
+      Farmer Marketplace
+    </span>
+
+    <h1>
+      Sell Your Produce at the
+      <span>Right Price</span>
+    </h1>
+
+    <p>
+      Add your crop, quantity and expected price.
+      AgriTwin AI will help you understand the market,
+      estimate your earnings and find suitable buyers.
+    </p>
+
+    <button class="sell-btn" onclick="openSellModal()">
+      <i class="ri-add-line"></i>
+      Sell My Produce
+    </button>
+
+  </section>
+
+
+  <!-- MARKET SUMMARY -->
+
+  <section class="market-summary">
+
+    <div class="summary-box">
+      <i class="ri-line-chart-line"></i>
+      <div>
+        <small>Market Trend</small>
+        <strong>Rising ↑</strong>
+      </div>
+    </div>
+
+    <div class="summary-box">
+      <i class="ri-money-rupee-circle-line"></i>
+      <div>
+        <small>Average Price</small>
+        <strong>₹2,450/Qtl</strong>
+      </div>
+    </div>
+
+    <div class="summary-box">
+      <i class="ri-user-search-line"></i>
+      <div>
+        <small>Active Buyers</small>
+        <strong>24</strong>
+      </div>
+    </div>
+
+    <div class="summary-box">
+      <i class="ri-robot-line"></i>
+      <div>
+        <small>AI Advice</small>
+        <strong>Good Time</strong>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- AI ADVISOR -->
+
+  <section class="ai-advisor">
+
+    <div class="ai-icon">
+      <i class="ri-robot-2-line"></i>
+    </div>
+
+    <div>
+      <h3>AI Selling Advisor</h3>
+      <p>
+        Current market demand is strong.
+        AI recommends checking buyer offers before selling.
+      </p>
+    </div>
+
+    <span class="confidence">92% Confidence</span>
+
+  </section>
+
+
+  <!-- MAIN GRID -->
+
+  <section class="market-grid">
+
+    <!-- BUYER OFFERS -->
+
+    <div>
+
+      <div class="section-heading">
+        <div>
+          <h2>Buyer Offers</h2>
+          <p>Best available deals for your produce</p>
+        </div>
+
+        <span class="live">● LIVE</span>
+      </div>
+
+
+      <div class="best-offer">
+
+        <span class="best-badge">
+          ⭐ AI Recommended
+        </span>
+
+        <div class="offer-top">
+
+          <div>
             <h3>Local Wholesale Buyer</h3>
-            <p>🍅 500 Kg Tomato | Distance: 18 km</p>
-            <div class="price-box">Offer: ₹34/Kg | Score: 94/100</div>
-            <div class="actions">
-              <button class="btn-primary" onclick="handleOffer(this, 'Accepted')">Accept</button>
-              <button class="btn-secondary" onclick="openCounterModal()">Negotiate</button>
-            </div>
+
+            <p>
+              🍅 Tomato • 500 Kg
+            </p>
+
+            <strong>₹34 / Kg</strong>
           </div>
+
+          <div class="deal-score">
+            <b>94</b>
+            <small>Deal Score</small>
+          </div>
+
         </div>
+
+
+        <div class="earning-box">
+
+          <span>
+            Gross ₹17,000
+          </span>
+
+          <span>
+            Transport -₹400
+          </span>
+
+          <strong>
+            Net ₹16,600
+          </strong>
+
+        </div>
+
+
+        <div class="offer-buttons">
+
+          <button onclick="acceptOffer(this)">
+            Accept Deal
+          </button>
+
+          <button class="outline"
+            onclick="negotiate()">
+            Negotiate
+          </button>
+
+        </div>
+
       </div>
 
-      <div class="right-col">
-        <h2>My Listings</h2>
-        <div id="myListingsContainer">
-          <div class="listing-item">
-            <h4>Fresh Tomatoes</h4>
-            <p>Qty: 500 Kg | Asking: ₹32/Kg</p>
-            <span class="status">🟢 Active</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
 
-  <!-- Sell Modal -->
-  <div id="sellModal" class="modal">
-    <div class="modal-content">
-      <h3>Sell Your Produce</h3>
-      <form id="produceForm" onsubmit="listProduceToMarket(event)">
-        <input type="text" id="cropName" placeholder="Crop Name (e.g. Tomato)" required>
-        <input type="number" id="cropQty" placeholder="Quantity (Kg)" required>
-        <input type="number" id="expectedPrice" placeholder="Expected Price (₹)" required>
-        <button type="submit" class="btn-primary">Publish Listing</button>
-      </form>
+      <div class="offer-card">
+
+        <div>
+          <h3>Regional Mandi Trader</h3>
+
+          <p>
+            🌾 Wheat • 200 Qtl
+          </p>
+
+          <small>
+            ₹2,650/Qtl • 24 km away
+          </small>
+        </div>
+
+        <button onclick="acceptOffer(this)">
+          Accept
+        </button>
+
+      </div>
+
+
+      <div class="offer-card">
+
+        <div>
+          <h3>Food Processing Buyer</h3>
+
+          <p>
+            🍅 Tomato • 300 Kg
+          </p>
+
+          <small>
+            ₹33/Kg • 31 km away
+          </small>
+        </div>
+
+        <button onclick="negotiate()">
+          Counter
+        </button>
+
+      </div>
+
     </div>
+
+
+    <!-- MY LISTINGS -->
+
+    <div>
+
+      <div class="section-heading">
+
+        <div>
+          <h2>My Listings</h2>
+          <p>Your active produce</p>
+        </div>
+
+        <button class="small-add"
+          onclick="openSellModal()">
+          + Add
+        </button>
+
+      </div>
+
+
+      <div id="listings">
+
+        <div class="listing">
+
+          <span class="status">
+            ● Active
+          </span>
+
+          <h3>Fresh Tomato</h3>
+
+          <p>
+            500 Kg • ₹32/Kg
+          </p>
+
+          <div class="listing-bottom">
+            <span>
+              AI Price ₹33/Kg
+            </span>
+
+            <b>2 Buyers</b>
+          </div>
+
+        </div>
+
+
+        <div class="listing">
+
+          <span class="status">
+            ● Active
+          </span>
+
+          <h3>Wheat</h3>
+
+          <p>
+            200 Qtl • ₹2,600/Qtl
+          </p>
+
+          <div class="listing-bottom">
+            <span>
+              AI Price ₹2,680
+            </span>
+
+            <b>4 Buyers</b>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- SELL MODAL -->
+
+<div id="sellModal" class="modal">
+
+  <div class="modal-box">
+
+    <button class="close"
+      onclick="closeSellModal()">
+      ×
+    </button>
+
+    <h2>
+      🌾 Sell Your Produce
+    </h2>
+
+    <p class="modal-info">
+      Enter your crop details and AI will estimate
+      a suitable selling price.
+    </p>
+
+
+    <form onsubmit="createListing(event)">
+
+      <div class="form-grid">
+
+        <div>
+          <label>Crop Name</label>
+
+          <input id="cropName"
+            type="text"
+            placeholder="e.g. Tomato"
+            required>
+        </div>
+
+
+        <div>
+          <label>Category</label>
+
+          <select id="category">
+            <option>Vegetable</option>
+            <option>Grain</option>
+            <option>Fruit</option>
+            <option>Pulses</option>
+          </select>
+        </div>
+
+
+        <div>
+          <label>Quantity</label>
+
+          <input id="quantity"
+            type="number"
+            placeholder="e.g. 500"
+            required>
+        </div>
+
+
+        <div>
+          <label>Unit</label>
+
+          <select id="unit">
+            <option>Kg</option>
+            <option>Quintal</option>
+            <option>Ton</option>
+          </select>
+        </div>
+
+
+        <div>
+          <label>Your Expected Price ₹</label>
+
+          <input id="price"
+            type="number"
+            placeholder="e.g. 32"
+            required>
+        </div>
+
+
+        <div>
+          <label>District</label>
+
+          <input id="district"
+            type="text"
+            placeholder="e.g. Nainital"
+            required>
+        </div>
+
+      </div>
+
+
+      <div class="ai-price">
+
+        <i class="ri-robot-line"></i>
+
+        <div>
+          <b>AI Price Assistant</b>
+
+          <p>
+            We'll compare your expected price with
+            the estimated market price.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div id="priceResult" class="price-result">
+        Enter details to see AI estimate.
+      </div>
+
+
+      <button class="publish-btn"
+        type="submit">
+        Publish & Find Buyers
+      </button>
+
+    </form>
+
   </div>
 
-  <script src="marketplace.js"></script>
+</div>
+
+
+<script src="marketplace.js"></script>
+
 </body>
 </html>
