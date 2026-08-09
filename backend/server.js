@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const path = require('path');
 require('dotenv').config();
 
 const app = express();
@@ -10,10 +9,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// --- STATIC FRONTEND SERVING ---
-// Yeh line backend ko batati hai ki frontend folder kahan hai taaki website seedha live URL par khul sake
-app.use(express.static(path.join(__dirname, '../frontend')));
-
 // MongoDB Connection
 const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/agriTwinDB";
 
@@ -21,8 +16,7 @@ mongoose.connect(MONGO_URI)
   .then(() => console.log('✅ MongoDB Connected Successfully!'))
   .catch((err) => console.error('❌ MongoDB Connection Error:', err));
 
-// --- SCHEMAS (Database Structure) ---
-
+// --- SCHEMAS ---
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
@@ -43,13 +37,16 @@ const serviceSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 const Service = mongoose.model('Service', serviceSchema);
 
-// --- API ENDPOINTS ---
+// --- API ENDPORTS ---
+
+app.get('/', (req, res) => {
+  res.send('AgriTwin Backend is Running Successfully!');
+});
 
 // 1. SIGNUP
 app.post('/api/signup', async (req, res) => {
   try {
     const { name, email, phone, password } = req.body;
-    
     const userExists = await User.findOne({ email });
     if (userExists) return res.status(400).json({ message: 'Email already registered!' });
 
@@ -84,21 +81,12 @@ app.post('/api/login', async (req, res) => {
 app.post('/api/services', async (req, res) => {
   try {
     const { userId, userName, userEmail, serviceType, details } = req.body;
-    
-    const newService = new Service({ 
-      userId, userName, userEmail, serviceType, details 
-    });
-    
+    const newService = new Service({ userId, userName, userEmail, serviceType, details });
     await newService.save();
     res.status(201).json({ message: 'Service requested successfully!' });
   } catch (err) {
     res.status(500).json({ message: 'Error booking service: ' + err.message });
   }
-});
-
-// Fallback route to serve index.html for any unknown route (Single Page App style)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/index.html'));
 });
 
 // Server Start
