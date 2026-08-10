@@ -36,3 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const googleBtn = document.querySelector(".google-btn");
+    
+    if (googleBtn) {
+        googleBtn.addEventListener("click", function() {
+            alert("Authenticating with Google Account...\nWelcome to AgriTwin AI!");
+            window.location.href = "dashboard.html";
+        });
+    }
+});
