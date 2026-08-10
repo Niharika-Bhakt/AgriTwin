@@ -140,5 +140,20 @@ width:75px;
 height:75px;
 
 }
+}
 
+/* --- RESPONSIVE FIX FOR SIGNUP PAGE --- */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+
+    .signup-box {
+        width: 100%;
+        padding: 25px 20px;
+    }
+
+    .signup-box h1 {
+        font-size: 1.8rem;
+    }
 }
