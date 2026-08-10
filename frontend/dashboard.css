@@ -533,3 +533,41 @@ body {
         font-size: 16px; 
     }
 }
+
+/* Mobile Header & Sidebar Toggle Fix */
+.mobile-top-bar {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .mobile-top-bar {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+        background: #12181b;
+        padding: 12px 20px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        border-bottom: 1px solid #222;
+    }
+
+    .dashboard-container {
+        padding-top: 60px;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: -280px;
+        top: 0;
+        height: 100%;
+        transition: 0.3s ease-in-out;
+        z-index: 1100;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+}
