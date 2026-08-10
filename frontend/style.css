@@ -962,3 +962,92 @@ footer {
   color: #9baaa0;
   font-size: 14px;
 }
+
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    
+    .nav-links, .nav-right .start-btn {
+        display: none; 
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+        gap: 30px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .hero-image {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .twin-container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .feature-container, 
+    .service-container {
+        grid-template-columns: 1fr !important;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 15px;
+    }
+
+    .section-heading h2 {
+        font-size: 2rem;
+    }
+
+    .twin-dashboard {
+        width: 100% !important;
+        padding: 20px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .cta-box {
+        padding: 30px 20px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .stat-card {
+        width: 100%;
+    }
+}
