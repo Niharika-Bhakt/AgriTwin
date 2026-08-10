@@ -1051,3 +1051,48 @@ footer {
         width: 100%;
     }
 }
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+        padding: 10px 15px;
+        gap: 10px;
+        justify-content: space-between;
+    }
+
+    .logo {
+        max-width: 65%;
+    }
+
+    .logo img {
+        height: 35px;
+        width: 35px;
+    }
+
+    .logo-text h2 {
+        font-size: 1.1rem;
+    }
+
+    .logo-text p {
+        font-size: 0.65rem;
+    }
+
+    .nav-right {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .ai-status {
+        display: none; 
+    }
+
+    .login-btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+
+    .menu-btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+}
