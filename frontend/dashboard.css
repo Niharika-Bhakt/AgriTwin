@@ -573,3 +573,25 @@ body {
         left: 0;
     }
 }
+
+/* Save PIN Button & Box Styling */
+#pinBox {
+    background: #0d1612;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #1e3328;
+}
+
+#pinInput {
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+#pinInput:focus {
+    border-color: #00ff66;
+    outline: none;
+}
+
+#pinBox button:hover {
+    background: #00cc52 !important;
+}
