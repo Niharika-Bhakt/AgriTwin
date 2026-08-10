@@ -1097,20 +1097,12 @@ footer {
     }
 }
 
-@media screen and (max-width: 768px) {
-    .dashboard-container, .main-content {
-        width: 100% !important;
-        margin-left: 0 !important;
-    }
 
-    .sidebar {
-        position: fixed;
-        left: -100%;
-        transition: 0.3s ease;
-        z-index: 1000;
-    }
 
-    .sidebar.active {
-        left: 0;
-    }
-}
+
+
+
+
+
+
+
