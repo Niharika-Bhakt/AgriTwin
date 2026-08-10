@@ -50,3 +50,16 @@ document.getElementById('profilePicInput').addEventListener('change', function(e
         reader.readAsDataURL(file);
     }
 });
+
+function savePin() {
+    const pinInput = document.getElementById('pinInput');
+    const pin = pinInput.value.trim();
+
+    // Check karein ki PIN pure 4 digits ka hai ya nahi
+    if (pin.length === 4 && !isNaN(pin)) {
+        localStorage.setItem('parentalPin', pin);
+        alert('🔒 Security PIN saved successfully!');
+    } else {
+        alert('❌ Please enter a valid 4-digit numeric PIN.');
+    }
+}
