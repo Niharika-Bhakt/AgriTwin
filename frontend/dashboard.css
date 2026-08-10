@@ -451,3 +451,53 @@ body {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* --- RESPONSIVE MASTER FIX FOR DASHBOARD --- */
+
+@media (max-width: 1024px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+}
+
+@media (max-width: 768px) {
+    .market-grid, 
+    .stats-section, 
+    .grid-2col {
+        grid-template-columns: 1fr !important;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .main-content {
+        padding: 15px !important;
+    }
+
+    .content-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .market-card, .stat-card, .card {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .finance-stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .stat-box {
+        width: 100% !important;
+    }
+}
