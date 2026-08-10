@@ -453,3 +453,38 @@ input:focus,select:focus{
     display:none;
   }
 }
+
+@media (max-width: 1024px) {
+    .service-nav nav {
+        display: none; 
+    }
+
+    .booking-area {
+        flex-direction: column !important;
+        display: flex;
+    }
+
+    .booking-form, .expert-card {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .input-row {
+        flex-direction: column !important;
+        display: flex;
+        gap: 15px;
+    }
+
+    .input-row > div {
+        width: 100% !important;
+    }
+
+    .service-hero h1 {
+        font-size: 2.2rem;
+    }
+}
