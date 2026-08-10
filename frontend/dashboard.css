@@ -534,7 +534,7 @@ body {
     }
 }
 
-/* Mobile Header & Sidebar Toggle Fix */
+/* Mobile Top Bar & Sidebar Fix */
 .mobile-top-bar {
     display: none;
 }
@@ -560,11 +560,13 @@ body {
 
     .sidebar {
         position: fixed;
-        left: -280px;
+        left: -260px;
         top: 0;
+        width: 260px;
         height: 100%;
         transition: 0.3s ease-in-out;
         z-index: 1100;
+        background: #0b120f;
     }
 
     .sidebar.active {
