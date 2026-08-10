@@ -702,3 +702,41 @@ font-size:24px;
 }
 
 }
+
+@media (max-width: 1024px) {
+    .app-container,
+    .hero,
+    .twin-container {
+        flex-direction: column;
+    }
+    
+    .navbar .nav-links {
+        display: none; 
+    }
+}
+
+
+@media (max-width: 768px) {
+    .market-grid,
+    .feature-container,
+    .service-container,
+    .services-grid {
+        grid-template-columns: 1fr !important; 
+    }
+
+    .section-heading h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 0;
+    }
+
+    .signup-box,
+    .login-box {
+        width: 100%;
+        padding: 20px 15px;
+    }
+}
