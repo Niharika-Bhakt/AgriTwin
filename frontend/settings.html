@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AgriTwin - Settings</title>
   <link rel="stylesheet" href="dashboard.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body class="dashboard-body">
 
@@ -27,24 +28,38 @@
     <main class="main-content">
       <header class="top-bar">
         <h1>Platform Settings</h1>
-        <p>Manage your account preferences and farm location</p>
+        <p>Manage your account preferences, theme, and security controls</p>
       </header>
 
-      <div class="dashboard-container">
+      <div class="dashboard-container" style="display: flex; flex-direction: column; gap: 20px;">
+        
+        <!-- 1. Farm Profile & Location Section -->
         <section class="card">
           <h3>⚙️ Farm Profile & Location</h3>
           <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px;">
+            
+            <!-- Profile Picture Upload -->
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 5px;">
+              <img id="profilePreview" src="assets/default-avatar.png" alt="Profile" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid #00ff66;">
+              <div>
+                <label for="profilePicInput" style="background: #112217; color: #00ff66; padding: 8px 12px; border-radius: 6px; cursor: pointer; border: 1px solid #00ff66; font-size: 14px; font-weight: bold;">
+                  <i class="ri-camera-line"></i> Change Photo
+                </label>
+                <input type="file" id="profilePicInput" accept="image/*" hidden>
+              </div>
+            </div>
+
             <div>
               <label style="color: #a3b8b0; display: block; margin-bottom: 5px;">Farmer Name</label>
-              <input type="text" id="settingsName" value="Niharika Bhakt" style="width: 100%; padding: 10px; border-radius: 6px;">
+              <input type="text" id="settingsName" value="Niharika Bhakt" style="width: 100%; padding: 10px; border-radius: 6px; background: #080f0c; color: #fff; border: 1px solid #22382b;">
             </div>
             <div>
               <label style="color: #a3b8b0; display: block; margin-bottom: 5px;">Primary Farm Location (City/Region)</label>
-              <input type="text" id="settingsLocation" value="Bhimtal, Uttarakhand" style="width: 100%; padding: 10px; border-radius: 6px;">
+              <input type="text" id="settingsLocation" value="Bhimtal, Uttarakhand" style="width: 100%; padding: 10px; border-radius: 6px; background: #080f0c; color: #fff; border: 1px solid #22382b;">
             </div>
             <div>
               <label style="color: #a3b8b0; display: block; margin-bottom: 5px;">Preferred Language</label>
-              <select style="width: 100%; padding: 10px; background: #080f0c; color: #fff; border: 1px solid #22382b; border-radius: 6px;">
+              <select id="settingsLanguage" style="width: 100%; padding: 10px; background: #080f0c; color: #fff; border: 1px solid #22382b; border-radius: 6px;">
                 <option>Hindi (हिंदी)</option>
                 <option>English</option>
               </select>
@@ -52,6 +67,35 @@
             <button onclick="saveSettings()" style="background: #00ff66; color: #0a0f0d; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 10px;">Save Changes</button>
           </div>
         </section>
+
+        <!-- 2. Appearance & Theme Section -->
+        <section class="card">
+          <h3>🎨 Appearance & Theme</h3>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+            <div>
+              <h4 style="color: #fff; margin: 0;">Dark Mode</h4>
+              <p style="color: #a3b8b0; font-size: 13px; margin: 2px 0 0 0;">Switch between dark and light themes</p>
+            </div>
+            <input type="checkbox" id="darkModeToggle" checked style="width: 20px; height: 20px; accent-color: #00ff66; cursor: pointer;">
+          </div>
+        </section>
+
+        <!-- 3. Parental Control & Security Section -->
+        <section class="card">
+          <h3>🔒 Parental Control & Security</h3>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+            <div>
+              <h4 style="color: #fff; margin: 0;">Enable Parental Lock</h4>
+              <p style="color: #a3b8b0; font-size: 13px; margin: 2px 0 0 0;">Restrict sensitive marketplace purchases & settings</p>
+            </div>
+            <input type="checkbox" id="parentalToggle" style="width: 20px; height: 20px; accent-color: #00ff66; cursor: pointer;">
+          </div>
+          <div id="pinBox" style="display: none; margin-top: 15px;">
+            <label style="color: #a3b8b0; display: block; margin-bottom: 5px;">Set 4-Digit Security PIN</label>
+            <input type="password" id="pinInput" maxlength="4" placeholder="****" style="width: 100%; padding: 10px; border-radius: 6px; background: #080f0c; color: #fff; border: 1px solid #22382b;">
+          </div>
+        </section>
+
       </div>
     </main>
   </div>
