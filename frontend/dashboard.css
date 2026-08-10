@@ -522,3 +522,14 @@ body {
         align-items: flex-start !important;
     }
 }
+
+@media (max-width: 768px) {
+    .dashboard-container .card {
+        padding: 15px;
+    }
+    
+    .dashboard-container input, 
+    .dashboard-container select {
+        font-size: 16px; 
+    }
+}
