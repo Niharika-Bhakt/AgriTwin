@@ -1,4 +1,3 @@
-/* --- Global Styles --- */
 :root {
     --bg-main: #0a0e11;
     --bg-card: #141a21;
@@ -27,13 +26,11 @@ body {
     overflow-x: hidden;
 }
 
-/* --- Layout --- */
 .dashboard-container {
     display: flex;
     min-height: 100vh;
 }
 
-/* Sidebar */
 .sidebar {
     width: 250px;
     background-color: var(--bg-card);
@@ -101,7 +98,6 @@ body {
     padding: 12px;
 }
 
-/* Main Content */
 .main-content {
     flex: 1;
     padding: 30px;
@@ -124,7 +120,6 @@ body {
     color: var(--text-muted);
 }
 
-/* --- Sections & Cards --- */
 .dashboard-section {
     margin-bottom: 30px;
 }
@@ -168,7 +163,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* --- Live Market Prices --- */
 .market-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -225,7 +219,6 @@ body {
     color: var(--danger-color);
 }
 
-/* --- Quick Stats --- */
 .stats-section {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -265,7 +258,6 @@ body {
     color: var(--success-color);
 }
 
-/* --- Upload & Buttons --- */
 .upload-box {
     border: 2px dashed var(--border-color);
     padding: 25px;
@@ -325,7 +317,6 @@ body {
     cursor: pointer;
 }
 
-/* --- Yield, Weather & Finance Cards --- */
 .yield-details .main-metric h1 {
     font-size: 32px;
     color: var(--accent-green);
@@ -386,7 +377,6 @@ body {
     color: var(--accent-green);
 }
 
-/* --- Modal Popup for AI Report --- */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -451,8 +441,6 @@ body {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-
-/* --- RESPONSIVE MASTER FIX FOR DASHBOARD --- */
 
 @media (max-width: 1024px) {
     .dashboard-container {
@@ -534,7 +522,6 @@ body {
     }
 }
 
-/* Mobile Top Bar & Sidebar Fix */
 .mobile-top-bar {
     display: none;
 }
@@ -574,7 +561,6 @@ body {
     }
 }
 
-/* Save PIN Button & Box Styling */
 #pinBox {
     background: #0d1612;
     padding: 15px;
