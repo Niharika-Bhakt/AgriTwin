@@ -17,7 +17,6 @@ function saveSettings() {
     alert('✅ Settings saved successfully!');
 }
 
-// Dark Mode Toggle Logic
 document.getElementById('darkModeToggle').addEventListener('change', function() {
     if(this.checked) {
         document.body.style.background = "#070c09";
@@ -28,7 +27,6 @@ document.getElementById('darkModeToggle').addEventListener('change', function() 
     }
 });
 
-// Parental PIN box display logic
 document.getElementById('parentalToggle').addEventListener('change', function() {
     const pinBox = document.getElementById('pinBox');
     if(this.checked) {
@@ -38,7 +36,6 @@ document.getElementById('parentalToggle').addEventListener('change', function() 
     }
 });
 
-// Profile Picture Preview logic
 document.getElementById('profilePicInput').addEventListener('change', function(e) {
     const file = e.target.files[0];
     if (file) {
@@ -55,7 +52,6 @@ function savePin() {
     const pinInput = document.getElementById('pinInput');
     const pin = pinInput.value.trim();
 
-    // Check karein ki PIN pure 4 digits ka hai ya nahi
     if (pin.length === 4 && !isNaN(pin)) {
         localStorage.setItem('parentalPin', pin);
         alert('🔒 Security PIN saved successfully!');

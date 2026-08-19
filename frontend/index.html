@@ -1,608 +1,534 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="AgriTwin AI - India's Intelligent Farm Operating System powered by AI Digital Twin, Disease Detection, Weather Intelligence and Farm Service Hub.">
-<title>AgriTwin AI | India's Intelligent Farm Operating System</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta
+      name="description"
+      content="AgriTwin AI - India's Intelligent Farm Operating System powered by AI Digital Twin, Disease Detection, Weather Intelligence and Farm Service Hub."
+    />
+    <title>AgriTwin AI | India's Intelligent Farm Operating System</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar">
+        <a href="#" class="logo">
+          <img src="assets/logoagri.jpeg" alt="AgriTwin AI Logo" />
+          <div class="logo-text">
+            <h2>AgriTwin AI</h2>
+            <p>India's Intelligent Farm Operating System</p>
+          </div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#digital-twin">Digital Twin</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#market">Market</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-right">
+          <div class="ai-status">
+            <span class="status-dot"></span>
+            <span>AI Online</span>
+          </div>
+
+          <a href="login.html" class="login-btn">
+            <i class="ri-user-line"></i>
+            <span>Login</span>
+          </a>
+          <div class="menu-dropdown">
+            <button class="menu-btn">Menu <i class="ri-menu-line"></i></button>
+            <div class="dropdown-content">
+              <a href="dashboard.html"
+                ><i class="ri-dashboard-line"></i> Dashboard</a
+              >
+              <a href="weather.html"
+                ><i class="ri-cloud-windy-line"></i> Weather</a
+              >
+              <a href="login.html"><i class="ri-login-box-line"></i> Login</a>
+              <a href="signup.html"><i class="ri-user-add-line"></i> Signup</a>
+              <a href="service.html"
+                ><i class="ri-service-line"></i> Services</a
+              >
+              <a href="marketplace.html"
+                ><i class="ri-store-2-line"></i> AgriTwin Marketplace</a
+              >
+            </div>
+          </div>
+
+          <button
+            class="start-btn"
+            onclick="window.location.href = 'dashboard.html'"
+          >
+            Start Monitoring
+            <i class="ri-arrow-right-line"></i>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <i class="ri-sparkling-line"></i>
+
+          <span>AI Powered Digital Farming Platform</span>
+        </div>
+
+        <h1>
+          India's Intelligent
+
+          <span>Farm Operating System</span>
+        </h1>
+
+        <p>
+          From Prediction to Action. Monitor your farm, detect crop diseases,
+          predict weather, book agriculture services and maximize farming profit
+          using Artificial Intelligence.
+        </p>
+
+        <div class="hero-buttons">
+          <button
+            class="primary-btn"
+            onclick="window.location.href = 'dashboard.html'"
+          >
+            Start Monitoring
+
+            <i class="ri-arrow-right-line"></i>
+          </button>
+
+          <button class="secondary-btn">
+            <i class="ri-play-circle-line"></i>
+
+            Watch Demo
+          </button>
+        </div>
 
-<link rel="stylesheet" href="style.css">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
-</head>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <h3>10K+</h3>
+            <span>Farmers</span>
+          </div>
 
-<body>
+          <div class="stat-card">
+            <h3>95%</h3>
+            <span>AI Accuracy</span>
+          </div>
 
-<header>
-<nav class="navbar">
-<a href="#" class="logo">
-<img src="assets/logoagri.jpeg" alt="AgriTwin AI Logo">
-<div class="logo-text">
-<h2>AgriTwin AI</h2>
-<p>India's Intelligent Farm Operating System</p>
-</div>
-</a>
-<ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#digital-twin">Digital Twin</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#market">Market</a></li>
-      <li><a href="#contact">Contact</a></li>
-</ul>
+          <div class="stat-card">
+            <h3>24×7</h3>
+            <span>Monitoring</span>
+          </div>
+        </div>
+      </div>
 
-<div class="nav-right">
-<div class="ai-status">
-<span class="status-dot"></span>
-<span>AI Online</span>
-</div>
+      <div class="hero-image">
+        <img src="assets/farm.jpeg" alt="Smart AI Farm" />
 
-<a href="login.html" class="login-btn">
-<i class="ri-user-line"></i>
-<span>Login</span>
-</a>
+        <div class="floating-card weather-card">
+          <i class="ri-sun-line"></i>
 
-<!-- All-in-One Options Menu Button (Updated with Separate Login & Signup) -->
-<div class="menu-dropdown">
-<button class="menu-btn">Menu <i class="ri-menu-line"></i></button>
-<div class="dropdown-content">
-<a href="dashboard.html"><i class="ri-dashboard-line"></i> Dashboard</a>
-<a href="weather.html"><i class="ri-cloud-windy-line"></i> Weather</a>
-<a href="login.html"><i class="ri-login-box-line"></i> Login</a>
-<a href="signup.html"><i class="ri-user-add-line"></i> Signup</a>
-<a href="service.html"><i class="ri-service-line"></i> Services</a>
-<a href="marketplace.html"><i class="ri-store-2-line"></i> AgriTwin Marketplace</a>
-</div>
-</div>
+          <div>
+            <h4>Weather</h4>
+            <p>28°C Clear</p>
+          </div>
+        </div>
 
-<button class="start-btn" onclick="window.location.href='dashboard.html'">
-Start Monitoring
-<i class="ri-arrow-right-line"></i>
-</button>
-
-</div>
-
-</nav>
-
-</header>
-
-<section class="hero">
-
-<div class="hero-content">
-
-<div class="hero-tag">
-
-<i class="ri-sparkling-line"></i>
-
-<span>AI Powered Digital Farming Platform</span>
-
-</div>
-
-<h1>
-
-India's Intelligent
-
-<span>Farm Operating System</span>
-
-</h1>
-
-<p>
-
-From Prediction to Action. Monitor your farm, detect crop diseases,
-predict weather, book agriculture services and maximize farming profit
-using Artificial Intelligence.
-
-</p>
-
-<div class="hero-buttons">
-
-<button class="primary-btn" onclick="window.location.href='dashboard.html'">
-
-Start Monitoring
-
-<i class="ri-arrow-right-line"></i>
-
-</button>
-
-<button class="secondary-btn">
-
-<i class="ri-play-circle-line"></i>
-
-Watch Demo
-
-</button>
-
-</div>
-
-<div class="hero-stats">
-
-<div class="stat-card">
-<h3>10K+</h3>
-<span>Farmers</span>
-</div>
-
-<div class="stat-card">
-<h3>95%</h3>
-<span>AI Accuracy</span>
-</div>
-
-<div class="stat-card">
-<h3>24×7</h3>
-<span>Monitoring</span>
-</div>
-
-</div>
-</div>
-
-<div class="hero-image">
-
-<img src="assets/farm.jpeg" alt="Smart AI Farm">
-
-<div class="floating-card weather-card">
-
-<i class="ri-sun-line"></i>
-
-<div>
-<h4>Weather</h4>
-<p>28°C Clear</p>
-</div>
-
-</div>
-
-<div class="floating-card ai-card">
-
-<i class="ri-robot-2-line"></i>
-
-<div>
-<h4>AI Status</h4>
-<p>Monitoring</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<div class="scroll-indicator">
-
-<span>Explore More</span>
-
-<i class="ri-arrow-down-line"></i>
-
-</div>
-
-<section class="why-agritwin" id="features">
-
-<div class="section-heading">
-
-<span class="section-tag">
-Why AgriTwin AI
-</span>
-
-<h2>
-
-From <span>Prediction</span> to <span>Action</span>
-
-</h2>
-
-<p class="section-subtitle">
-
-One Platform. Complete Farm Intelligence.
-
-</p>
-
-<p>
-
-AgriTwin AI combines Artificial Intelligence,
-Digital Twin, Disease Detection,
-Weather Intelligence, Medicine Assistance
-and Farm Services into one powerful
-farming platform.
-
-</p>
-
-</div>
-
-<div class="feature-container">
-
-<!-- WEATHER -->
-
-<div class="feature-card">
-
-<div class="feature-image">
-
-<img src="assets/weather.jpeg" alt="Weather Intelligence">
-
-<span class="feature-badge">
-LIVE WEATHER
-</span>
-
-</div>
-
-<div class="feature-content">
-
-<h3>
-
-<i class="ri-cloud-line"></i>
-
-Weather Intelligence
-
-</h3>
-
-<p>
-
-Real-time weather forecasts,
-rainfall alerts, temperature insights
-and AI recommendations to protect crops.
-
-</p>
-
-<div class="feature-stat">
-
-98% Accuracy
-
-</div>
-
-<a href="#">
-
-Learn More
-
-<i class="ri-arrow-right-line"></i>
-
-</a>
-
-</div>
-
-</div>
-
-<!-- DISEASE -->
-
-<div class="feature-card">
-
-<div class="feature-image">
-
-<img src="assets/Disease Detection.jpeg" alt="Disease Detection">
-
-<span class="feature-badge">
-AI DETECTION
-</span>
-
-</div>
-
-<div class="feature-content">
-
-<h3>
-
-<i class="ri-bug-line"></i>
-
-AI Disease Detection
-
-</h3>
-
-<p>
-
-Upload crop images and let AI detect
-diseases instantly with diagnosis
-and treatment guidance.
-
-</p>
-
-<div class="feature-stat">
-
-95% Detection
-
-</div>
-
-<a href="#">
-
-Learn More
-
-<i class="ri-arrow-right-line"></i>
-
-</a>
-
-</div>
-
-</div>
-<!-- MEDICINE -->
-
-<div class="feature-card">
-<div class="feature-image">
-<img src="assets/medicine.jpeg" alt="Medicine Assistant">
-<span class="feature-badge">SMART MEDICINE</span>
-</div>
-
-<div class="feature-content">
-<h3>
-<i class="ri-capsule-line"></i>
-Medicine Assistant
-</h3>
-
-<p>
-Get the right medicine, dosage, usage instructions and AI-powered treatment recommendations.
-</p>
-
-<div class="feature-stat">
-500+ Medicines
-</div>
-
-<a href="#">
-Learn More
-<i class="ri-arrow-right-line"></i>
-</a>
-</div>
-</div>
-
-<!-- FARM SERVICE HUB -->
-
-<div class="feature-card">
-<div class="feature-image">
-<img src="assets/booking.jpeg" alt="Farm Service Hub">
-<span class="feature-badge">INSTANT BOOKING</span>
-</div>
-
-<div class="feature-content">
-<h3>
-<i class="ri-truck-line"></i>
-Farm Service Hub
-</h3>
-
-<p>
-Book verified spray experts, drone operators, tractors, soil testing and agriculture services in one click.
-</p>
-
-<div class="feature-stat">
-1000+ Experts
-</div>
-
-<a href="#">
-Learn More
-<i class="ri-arrow-right-line"></i>
-</a>
-</div>
-</div>
-
-</div>
-</section>
-
-<section class="digital-twin" id="digital-twin">
-
-<div class="section-heading">
-<span class="section-tag">AI Digital Twin</span>
-
-<h2>
-Your Farm's <span>Intelligent</span> Virtual Model
-</h2>
-
-<p>
-A real-time AI-powered farm replica that continuously monitors crop health, weather, soil conditions and predicts future risks before they happen.
-</p>
-</div>
-
-<div class="twin-container">
-
-<div class="twin-image">
-
-<img src="assets/AI Digital.jpeg" alt="AI Digital Twin">
-
-<div class="ai-floating-card health">
-<i class="ri-plant-line"></i>
-<div>
-<h4>Crop Health</h4>
-<p>96% Healthy</p>
-</div>
-</div>
-
-<div class="ai-floating-card weather">
-<i class="ri-sun-line"></i>
-<div>
-<h4>Weather</h4>
-<p>28°C Clear</p>
-</div>
-</div>
-
-</div>
-
-<div class="twin-dashboard">
-
-<div class="dashboard-header">
-<i class="ri-ai-generate"></i>
-<h3>Live Farm Intelligence</h3>
-<span>AI Active</span>
-</div>
-
-<div class="dashboard-card">
-<div class="dashboard-icon">🌱</div>
-<div>
-<h4>Crop Health</h4>
-<p>Excellent Condition</p>
-</div>
-<strong>96%</strong>
-</div>
-
-<div class="dashboard-card">
-<div class="dashboard-icon">💧</div>
-<div>
-<h4>Soil Moisture</h4>
-<p>Optimal Level</p>
-</div>
-<strong>78%</strong>
-</div>
-
-<div class="dashboard-card">
-<div class="dashboard-icon">🦠</div>
-<div>
-<h4>Disease Risk</h4>
-<p>Low Risk Detected</p>
-</div>
-<strong class="safe">LOW</strong>
-</div>
-
-<div class="dashboard-card">
-<div class="dashboard-icon">📈</div>
-<div>
-<h4>Yield Prediction</h4>
-<p>Expected Harvest</p>
-</div>
-<strong>94%</strong>
-</div>
-
-<button class="monitor-btn" onclick="window.location.href='dashboard.html'">
-<i class="ri-radar-line"></i>
-Start AI Monitoring
-</button>
-
-</div>
-</div>
-</section>
-
-<section class="service-hub" id="services">
-
-<div class="section-heading">
-<span class="section-tag">Farm Service Hub</span>
-
-<h2>
-Uber For <span>Agriculture</span>
-</h2>
-
-<p>
-Connect farmers with verified agriculture experts, equipment providers and smart farming services.
-</p>
-</div>
-
-<div class="service-container">
-
-<div class="service-card">
-<i class="ri-user-star-line"></i>
-<h3>Spray Experts</h3>
-<p>Book verified professionals for crop spraying and field management.</p>
-</div>
-
-<div class="service-card">
-<i class="ri-drone-line"></i>
-<h3>Drone Services</h3>
-<p>Get drone-based crop monitoring and spraying solutions.</p>
-</div>
-
-<div class="service-card">
-<i class="ri-truck-line"></i>
-<h3>Farm Equipment</h3>
-<p>Rent tractors, harvesters and modern farming equipment with ease.</p>
-</div>
-
-<div class="service-card">
-<i class="ri-test-tube-line"></i>
-<h3>Soil Testing</h3>
-<p>Analyze soil quality and receive AI-powered farming recommendations.</p>
-</div>
-
-</div>
-
-<a href="service.html" class="service-btn" onclick="window.location.href='service.html'; return false;" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer;">
-Book Agriculture Service
-<i class="ri-arrow-right-line"></i>
-</a>
-
-</section>
-
-
-<section class="cta-section">
-
-<div class="cta-box">
-
-<h2>
-Ready to Transform Your Farm?
-</h2>
-
-<p>
-Start monitoring your farm with AI-powered intelligence and make smarter farming decisions with AgriTwin AI.
-</p>
-
-<button class="primary-btn" onclick="window.location.href='dashboard.html'">
-Start Monitoring
-<i class="ri-arrow-right-line"></i>
-</button>
-
-</div>
-
-</section>
-
-<footer id="contact">
-
-<div class="footer-content">
-
-<div class="footer-column">
-
-<div class="footer-logo">
-<img src="assets/logoagri.jpeg" alt="AgriTwin AI Logo">
-<h2>AgriTwin AI</h2>
-</div>
-
-<p class="footer-text">
-Empowering Indian farmers with Artificial Intelligence, Digital Twin Technology and Smart Farming Solutions.
-</p>
-
-</div>
-
-<div class="footer-column">
-
-<h3>Quick Links</h3>
-
-<a href="#">Home</a>
-<a href="#features">Features</a>
-<a href="#digital-twin">Digital Twin</a>
-<a href="#services">Services</a>
-<a href="#contact">Contact</a>
-
-</div>
-
-<div class="footer-column">
-
-<h3>AI Solutions</h3>
-
-<a href="#">Weather Intelligence</a>
-<a href="#">Disease Detection</a>
-<a href="#">Medicine Assistant</a>
-<a href="#">Farm Service Hub</a>
-<a href="#">Market Intelligence</a>
-
-</div>
-
-<div class="footer-column">
-
-<h3>Contact</h3>
-
-<p><i class="ri-mail-line"></i> hello@agritwin.ai</p>
-<p><i class="ri-phone-line"></i> +91 1231231231</p>
-<p><i class="ri-map-pin-line"></i> Uttarakhand, India</p>
-
-<div class="footer-social">
-
-<a href="#"><i class="ri-linkedin-fill"></i></a>
-
-<a href="#"><i class="ri-instagram-line"></i></a>
-
-<a href="#"><i class="ri-twitter-x-line"></i></a>
-
-<a href="#"><i class="ri-mail-send-line"></i></a>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="footer-bottom">
-
-<p>© 2026 AgriTwin AI. All Rights Reserved.</p>
-
-<p>Designed with ❤️ for Indian Farmers 🌾</p>
-
-</div>
-
-</footer>
-
-<script src="script.js"></script>
-
-</body>
+        <div class="floating-card ai-card">
+          <i class="ri-robot-2-line"></i>
+
+          <div>
+            <h4>AI Status</h4>
+            <p>Monitoring</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="scroll-indicator">
+      <span>Explore More</span>
+
+      <i class="ri-arrow-down-line"></i>
+    </div>
+
+    <section class="why-agritwin" id="features">
+      <div class="section-heading">
+        <span class="section-tag"> Why AgriTwin AI </span>
+
+        <h2>From <span>Prediction</span> to <span>Action</span></h2>
+
+        <p class="section-subtitle">
+          One Platform. Complete Farm Intelligence.
+        </p>
+
+        <p>
+          AgriTwin AI combines Artificial Intelligence, Digital Twin, Disease
+          Detection, Weather Intelligence, Medicine Assistance and Farm Services
+          into one powerful farming platform.
+        </p>
+      </div>
+
+      <div class="feature-container">
+        <!-- WEATHER -->
+
+        <div class="feature-card">
+          <div class="feature-image">
+            <img src="assets/weather.jpeg" alt="Weather Intelligence" />
+
+            <span class="feature-badge"> LIVE WEATHER </span>
+          </div>
+
+          <div class="feature-content">
+            <h3>
+              <i class="ri-cloud-line"></i>
+
+              Weather Intelligence
+            </h3>
+
+            <p>
+              Real-time weather forecasts, rainfall alerts, temperature insights
+              and AI recommendations to protect crops.
+            </p>
+
+            <div class="feature-stat">98% Accuracy</div>
+
+            <a href="#">
+              Learn More
+
+              <i class="ri-arrow-right-line"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- DISEASE -->
+
+        <div class="feature-card">
+          <div class="feature-image">
+            <img src="assets/Disease Detection.jpeg" alt="Disease Detection" />
+
+            <span class="feature-badge"> AI DETECTION </span>
+          </div>
+
+          <div class="feature-content">
+            <h3>
+              <i class="ri-bug-line"></i>
+
+              AI Disease Detection
+            </h3>
+
+            <p>
+              Upload crop images and let AI detect diseases instantly with
+              diagnosis and treatment guidance.
+            </p>
+
+            <div class="feature-stat">95% Detection</div>
+
+            <a href="#">
+              Learn More
+
+              <i class="ri-arrow-right-line"></i>
+            </a>
+          </div>
+        </div>
+        <!-- MEDICINE -->
+
+        <div class="feature-card">
+          <div class="feature-image">
+            <img src="assets/medicine.jpeg" alt="Medicine Assistant" />
+            <span class="feature-badge">SMART MEDICINE</span>
+          </div>
+
+          <div class="feature-content">
+            <h3>
+              <i class="ri-capsule-line"></i>
+              Medicine Assistant
+            </h3>
+
+            <p>
+              Get the right medicine, dosage, usage instructions and AI-powered
+              treatment recommendations.
+            </p>
+
+            <div class="feature-stat">500+ Medicines</div>
+
+            <a href="#">
+              Learn More
+              <i class="ri-arrow-right-line"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- FARM SERVICE HUB -->
+
+        <div class="feature-card">
+          <div class="feature-image">
+            <img src="assets/booking.jpeg" alt="Farm Service Hub" />
+            <span class="feature-badge">INSTANT BOOKING</span>
+          </div>
+
+          <div class="feature-content">
+            <h3>
+              <i class="ri-truck-line"></i>
+              Farm Service Hub
+            </h3>
+
+            <p>
+              Book verified spray experts, drone operators, tractors, soil
+              testing and agriculture services in one click.
+            </p>
+
+            <div class="feature-stat">1000+ Experts</div>
+
+            <a href="#">
+              Learn More
+              <i class="ri-arrow-right-line"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="digital-twin" id="digital-twin">
+      <div class="section-heading">
+        <span class="section-tag">AI Digital Twin</span>
+
+        <h2>Your Farm's <span>Intelligent</span> Virtual Model</h2>
+
+        <p>
+          A real-time AI-powered farm replica that continuously monitors crop
+          health, weather, soil conditions and predicts future risks before they
+          happen.
+        </p>
+      </div>
+
+      <div class="twin-container">
+        <div class="twin-image">
+          <img src="assets/AI Digital.jpeg" alt="AI Digital Twin" />
+
+          <div class="ai-floating-card health">
+            <i class="ri-plant-line"></i>
+            <div>
+              <h4>Crop Health</h4>
+              <p>96% Healthy</p>
+            </div>
+          </div>
+
+          <div class="ai-floating-card weather">
+            <i class="ri-sun-line"></i>
+            <div>
+              <h4>Weather</h4>
+              <p>28°C Clear</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="twin-dashboard">
+          <div class="dashboard-header">
+            <i class="ri-ai-generate"></i>
+            <h3>Live Farm Intelligence</h3>
+            <span>AI Active</span>
+          </div>
+
+          <div class="dashboard-card">
+            <div class="dashboard-icon">🌱</div>
+            <div>
+              <h4>Crop Health</h4>
+              <p>Excellent Condition</p>
+            </div>
+            <strong>96%</strong>
+          </div>
+
+          <div class="dashboard-card">
+            <div class="dashboard-icon">💧</div>
+            <div>
+              <h4>Soil Moisture</h4>
+              <p>Optimal Level</p>
+            </div>
+            <strong>78%</strong>
+          </div>
+
+          <div class="dashboard-card">
+            <div class="dashboard-icon">🦠</div>
+            <div>
+              <h4>Disease Risk</h4>
+              <p>Low Risk Detected</p>
+            </div>
+            <strong class="safe">LOW</strong>
+          </div>
+
+          <div class="dashboard-card">
+            <div class="dashboard-icon">📈</div>
+            <div>
+              <h4>Yield Prediction</h4>
+              <p>Expected Harvest</p>
+            </div>
+            <strong>94%</strong>
+          </div>
+
+          <button
+            class="monitor-btn"
+            onclick="window.location.href = 'dashboard.html'"
+          >
+            <i class="ri-radar-line"></i>
+            Start AI Monitoring
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-hub" id="services">
+      <div class="section-heading">
+        <span class="section-tag">Farm Service Hub</span>
+
+        <h2>Uber For <span>Agriculture</span></h2>
+
+        <p>
+          Connect farmers with verified agriculture experts, equipment providers
+          and smart farming services.
+        </p>
+      </div>
+
+      <div class="service-container">
+        <div class="service-card">
+          <i class="ri-user-star-line"></i>
+          <h3>Spray Experts</h3>
+          <p>
+            Book verified professionals for crop spraying and field management.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <i class="ri-drone-line"></i>
+          <h3>Drone Services</h3>
+          <p>Get drone-based crop monitoring and spraying solutions.</p>
+        </div>
+
+        <div class="service-card">
+          <i class="ri-truck-line"></i>
+          <h3>Farm Equipment</h3>
+          <p>
+            Rent tractors, harvesters and modern farming equipment with ease.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <i class="ri-test-tube-line"></i>
+          <h3>Soil Testing</h3>
+          <p>
+            Analyze soil quality and receive AI-powered farming recommendations.
+          </p>
+        </div>
+      </div>
+
+      <a
+        href="service.html"
+        class="service-btn"
+        onclick="
+          window.location.href = 'service.html';
+          return false;
+        "
+        style="
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          cursor: pointer;
+        "
+      >
+        Book Agriculture Service
+        <i class="ri-arrow-right-line"></i>
+      </a>
+    </section>
+
+    <section class="cta-section">
+      <div class="cta-box">
+        <h2>Ready to Transform Your Farm?</h2>
+
+        <p>
+          Start monitoring your farm with AI-powered intelligence and make
+          smarter farming decisions with AgriTwin AI.
+        </p>
+
+        <button
+          class="primary-btn"
+          onclick="window.location.href = 'dashboard.html'"
+        >
+          Start Monitoring
+          <i class="ri-arrow-right-line"></i>
+        </button>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div class="footer-content">
+        <div class="footer-column">
+          <div class="footer-logo">
+            <img src="assets/logoagri.jpeg" alt="AgriTwin AI Logo" />
+            <h2>AgriTwin AI</h2>
+          </div>
+
+          <p class="footer-text">
+            Empowering Indian farmers with Artificial Intelligence, Digital Twin
+            Technology and Smart Farming Solutions.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+
+          <a href="#">Home</a>
+          <a href="#features">Features</a>
+          <a href="#digital-twin">Digital Twin</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>AI Solutions</h3>
+
+          <a href="#">Weather Intelligence</a>
+          <a href="#">Disease Detection</a>
+          <a href="#">Medicine Assistant</a>
+          <a href="#">Farm Service Hub</a>
+          <a href="#">Market Intelligence</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>Contact</h3>
+
+          <p><i class="ri-mail-line"></i> hello@agritwin.ai</p>
+          <p><i class="ri-phone-line"></i> +91 1231231231</p>
+          <p><i class="ri-map-pin-line"></i> Uttarakhand, India</p>
+
+          <div class="footer-social">
+            <a href="#"><i class="ri-linkedin-fill"></i></a>
+
+            <a href="#"><i class="ri-instagram-line"></i></a>
+
+            <a href="#"><i class="ri-twitter-x-line"></i></a>
+
+            <a href="#"><i class="ri-mail-send-line"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 AgriTwin AI. All Rights Reserved.</p>
+
+        <p>Designed with ❤️ for Indian Farmers 🌾</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>

@@ -14,7 +14,7 @@
   padding: 8px 15px;
   border-radius: 30px;
   color: #4ade80;
-  background: rgba(74,222,128,.1);
+  background: rgba(74, 222, 128, 0.1);
 }
 
 .market-hero h1 {
@@ -49,14 +49,14 @@
 
 .market-summary {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 18px;
   margin-bottom: 25px;
 }
 
 .summary-box {
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   padding: 22px;
   display: flex;
@@ -87,7 +87,7 @@
   margin-bottom: 30px;
   border: 1px solid #2f9e5b;
   border-radius: 16px;
-  background: rgba(34,197,94,.08);
+  background: rgba(34, 197, 94, 0.08);
 }
 
 .ai-icon {
@@ -143,8 +143,8 @@
 .best-offer,
 .offer-card,
 .listing {
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 18px;
   padding: 24px;
   margin-bottom: 16px;
@@ -210,7 +210,7 @@
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  background: rgba(0,0,0,.2);
+  background: rgba(0, 0, 0, 0.2);
   padding: 14px;
   border-radius: 10px;
   color: #cbd5e1;
@@ -254,7 +254,7 @@
 .listing-bottom {
   display: flex;
   justify-content: space-between;
-  background: rgba(34,197,94,.08);
+  background: rgba(34, 197, 94, 0.08);
   padding: 10px;
   border-radius: 8px;
   color: #4ade80;
@@ -264,7 +264,7 @@
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.8);
+  background: rgba(0, 0, 0, 0.8);
   justify-content: center;
   align-items: center;
   padding: 20px;
@@ -341,7 +341,7 @@
 }
 
 .price-result {
-  background: rgba(34,197,94,.08);
+  background: rgba(34, 197, 94, 0.08);
   color: #4ade80;
   padding: 14px;
   border-radius: 10px;
@@ -352,8 +352,7 @@
   width: 100%;
 }
 
-@media(max-width:800px) {
-
+@media (max-width: 800px) {
   .market-summary,
   .market-grid {
     grid-template-columns: 1fr;
@@ -372,8 +371,7 @@
   }
 }
 
-@media(max-width:550px) {
-
+@media (max-width: 550px) {
   .form-grid {
     grid-template-columns: 1fr;
   }
@@ -393,29 +391,29 @@
 }
 
 @media (max-width: 1024px) {
-    .navbar .nav-links {
-        display: none; 
-    }
+  .navbar .nav-links {
+    display: none;
+  }
 
-    .market-grid {
-        grid-template-columns: 1fr !important;
-    }
+  .market-grid {
+    grid-template-columns: 1fr !important;
+  }
 
-    .market-summary {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
+  .market-summary {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 }
 
 @media (max-width: 768px) {
-    .market-summary {
-        grid-template-columns: 1fr !important;
-    }
+  .market-summary {
+    grid-template-columns: 1fr !important;
+  }
 
-    .form-grid {
-        grid-template-columns: 1fr !important;
-    }
+  .form-grid {
+    grid-template-columns: 1fr !important;
+  }
 
-    .market-hero h1 {
-        font-size: 2rem;
-    }
+  .market-hero h1 {
+    font-size: 2rem;
+  }
 }

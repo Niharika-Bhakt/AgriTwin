@@ -1,14 +1,4 @@
-/* =========================================================
-   AGRITWIN AI — FARMER COMMAND CENTER
-   Dashboard JavaScript
-   ========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
-
-    /* =====================================================
-       1. USER NAME
-       ===================================================== */
-
     const userNameDisplay = document.getElementById("userNameDisplay");
 
     const savedUser = localStorage.getItem("user");
@@ -25,38 +15,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-
-    /* =====================================================
-       2. CROP IMAGE UPLOAD
-       ===================================================== */
-
     const uploadBox = document.getElementById("uploadBoxTrigger");
     const fileInput = document.getElementById("cropImageInput");
     const uploadText = document.getElementById("uploadText");
     const analyzeBtn = document.getElementById("analyzeBtn");
 
     let selectedImageFile = null;
-
-
-    // Safety check
     if (!uploadBox || !fileInput || !uploadText || !analyzeBtn) {
         console.warn("Crop upload elements not found.");
         return;
     }
 
-
-    /* -----------------------------------------------------
-       Click Upload Box
-       ----------------------------------------------------- */
-
     uploadBox.addEventListener("click", () => {
         fileInput.click();
     });
-
-
-    /* -----------------------------------------------------
-       File Selected
-       ----------------------------------------------------- */
 
     fileInput.addEventListener("change", (event) => {
 
@@ -66,8 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-
-        // Check image type
         if (!file.type.startsWith("image/")) {
 
             alert("Please select a valid crop image.");
@@ -83,9 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-
-        // Check file size
-        // Maximum 5 MB
         if (file.size > 5 * 1024 * 1024) {
 
             alert("Image size should be less than 5 MB.");
@@ -101,12 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-
-        // Save selected file
         selectedImageFile = file;
-
-
-        // Show selected file name
         uploadText.innerHTML = `
             📷 <b>${escapeHTML(file.name)}</b>
             <br>
@@ -115,21 +77,11 @@ document.addEventListener("DOMContentLoaded", () => {
             </small>
         `;
 
-
-        // Enable Analyze button
         analyzeBtn.disabled = false;
-
-
-        // Change upload box appearance
         uploadBox.style.borderColor = "#00e676";
         uploadBox.style.background =
             "rgba(0, 230, 118, 0.06)";
     });
-
-
-    /* =====================================================
-       3. AI ANALYSIS MODAL
-       ===================================================== */
 
     const analysisModal =
         document.getElementById("analysisModal");
@@ -140,21 +92,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const reportContent =
         document.getElementById("reportContent");
 
-
-    /* -----------------------------------------------------
-       IMPORTANT:
-       Modal MUST remain hidden when page opens
-       ----------------------------------------------------- */
-
     if (analysisModal) {
         analysisModal.setAttribute("hidden", "");
         analysisModal.style.display = "none";
     }
-
-
-    /* -----------------------------------------------------
-       Open Modal
-       ----------------------------------------------------- */
 
     analyzeBtn.addEventListener("click", () => {
 
@@ -165,12 +106,8 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-
-        // Open modal
         openAnalysisModal();
 
-
-        // Show loading state
         reportContent.innerHTML = `
             <div class="loading-spinner"></div>
 
@@ -191,19 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 Scanning ${escapeHTML(selectedImageFile.name)}
             </p>
         `;
-
-
-        // Disable button while analyzing
         analyzeBtn.disabled = true;
-
-
-        /*
-         * Demo AI analysis
-         *
-         * Later you can replace this timeout
-         * with your real AI/API request.
-         */
-
         setTimeout(() => {
 
             showAIReport();
@@ -213,11 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 2000);
 
     });
-
-
-    /* =====================================================
-       4. OPEN MODAL FUNCTION
-       ===================================================== */
 
     function openAnalysisModal() {
 
@@ -232,11 +152,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.style.overflow = "hidden";
     }
 
-
-    /* =====================================================
-       5. CLOSE MODAL FUNCTION
-       ===================================================== */
-
     function closeAnalysisModal() {
 
         if (!analysisModal) {
@@ -250,9 +165,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.style.overflow = "";
     }
 
-
-    /* Close button */
-
     if (closeModalBtn) {
 
         closeModalBtn.addEventListener(
@@ -260,9 +172,6 @@ document.addEventListener("DOMContentLoaded", () => {
             closeAnalysisModal
         );
     }
-
-
-    /* Click outside modal */
 
     if (analysisModal) {
 
@@ -277,11 +186,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
-    /* =====================================================
-       6. ESC KEY CLOSE MODAL
-       ===================================================== */
-
     document.addEventListener("keydown", (event) => {
 
         if (event.key === "Escape") {
@@ -291,11 +195,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
     });
-
-
-    /* =====================================================
-       7. AI REPORT
-       ===================================================== */
 
     function showAIReport() {
 
@@ -429,11 +328,6 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
     }
 
-
-    /* =====================================================
-       8. PRINT REPORT
-       ===================================================== */
-
     const printReportBtn =
         document.getElementById("printReportBtn");
 
@@ -528,11 +422,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-
-    /* =====================================================
-       9. CONSULT EXPERT
-       ===================================================== */
-
     const consultExpertBtn =
         document.getElementById("consultExpertBtn");
 
@@ -547,11 +436,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     }
-
-
-    /* =====================================================
-       10. LOGOUT
-       ===================================================== */
 
     const logoutBtn =
         document.getElementById("logoutBtn");
@@ -572,23 +456,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             localStorage.removeItem("user");
-
-            /*
-             * If later you use JWT:
-             *
-             * localStorage.removeItem("token");
-             */
-
             window.location.href = "login.html";
 
         });
 
     }
-
-
-    /* =====================================================
-       11. SAFE HTML FUNCTION
-       ===================================================== */
 
     function escapeHTML(value) {
 
@@ -599,11 +471,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return div.innerHTML;
 
     }
-
-
-    /* =====================================================
-       12. DASHBOARD LOAD ANIMATION
-       ===================================================== */
 
     const cards = document.querySelectorAll(
         ".card, .stat-card, .market-card"
@@ -628,11 +495,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 80 * index);
 
     });
-
-
-    /* =====================================================
-       13. FINAL SAFETY
-       ===================================================== */
 
     console.log(
         "🌱 AgriTwin AI Dashboard loaded successfully."

@@ -1,4 +1,3 @@
-// 1. GLOBAL FIX: Prevent 'Learn More' href="#" from jumping to top
 document.addEventListener('click', (e) => {
   const target = e.target.closest('a') || e.target.closest('button');
   
@@ -16,7 +15,6 @@ document.addEventListener('click', (e) => {
   }
 }, true);
 
-// 2. NAVBAR SCROLL EFFECT
 const navbar = document.querySelector(".navbar");
 const navLinks = document.querySelectorAll(".nav-links a");
 const sections = document.querySelectorAll("section[id]");
@@ -29,7 +27,6 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// 3. SMOOTH SCROLL FOR NAV LINKS
 navLinks.forEach(link => {
   link.addEventListener("click", function (e) {
     const targetId = this.getAttribute("href");
@@ -46,7 +43,6 @@ navLinks.forEach(link => {
   });
 });
 
-// 4. ACTIVE LINK HIGHLIGHT ON SCROLL
 window.addEventListener("scroll", () => {
   let currentSection = "";
   sections.forEach(section => {
@@ -65,14 +61,12 @@ window.addEventListener("scroll", () => {
   });
 });
 
-// 5. BUTTONS REDIRECTION LOGIC (Book Service, Start Monitoring, & Start AI Monitoring)
 document.addEventListener("click", (e) => {
   const btn = e.target.closest("button, a");
   if (!btn) return;
 
   const btnText = btn.innerText ? btn.innerText.trim() : "";
 
-  // Book Agriculture Service
   if (btnText.includes("Book Agriculture Service") || btn.classList.contains("service-btn")) {
     e.preventDefault();
     const user = localStorage.getItem("user");
@@ -83,7 +77,6 @@ document.addEventListener("click", (e) => {
     }
   }
 
-  // Start Monitoring & Start AI Monitoring (Handles Digital Twin Section)
   if (btnText.includes("Start Monitoring") || btnText.includes("Start AI Monitoring") || btn.classList.contains("start-btn")) {
     if (!btn.classList.contains("secondary-btn")) {
       e.preventDefault();
@@ -97,7 +90,6 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// 6. SCROLL REVEAL ANIMATIONS
 const revealItems = document.querySelectorAll(
   ".feature-card, .service-card, .digital-twin, .cta-box, .section-heading"
 );
@@ -116,7 +108,6 @@ revealItems.forEach(item => {
   revealObserver.observe(item);
 });
 
-// 7. STATS COUNTER ANIMATION
 const counterSection = document.querySelector(".hero-stats");
 const counters = document.querySelectorAll(".stat-card h3");
 let counterStarted = false;
@@ -158,7 +149,6 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// 8. DYNAMIC TICKERS
 const aiStatus = document.querySelector(".ai-card p");
 if (aiStatus) {
   const statusList = ["Monitoring", "Scanning Crops", "Analyzing Soil", "Checking Weather", "Predicting Yield", "AI Online"];
@@ -173,7 +163,6 @@ if (aiStatus) {
   }, 3000);
 }
 
-// 9. BACK TO TOP BUTTON
 const backToTop = document.createElement("button");
 backToTop.className = "back-to-top";
 backToTop.innerHTML = '<i class="ri-arrow-up-line"></i>';
@@ -191,19 +180,15 @@ backToTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-// Click-based Menu Dropdown Toggle Fix
 document.addEventListener("click", (e) => {
   const menuDropdown = document.querySelector(".menu-dropdown");
   const menuBtn = document.querySelector(".menu-btn");
   
   if (!menuDropdown) return;
-
-  // Agar user ne Menu button par click kiya hai
   if (menuBtn && menuBtn.contains(e.target)) {
     e.stopPropagation();
     menuDropdown.classList.toggle("active");
   } 
-  // Agar user ne dropdown ke andar ya baahar click kiya hai toh band kar do
   else {
     menuDropdown.classList.remove("active");
   }

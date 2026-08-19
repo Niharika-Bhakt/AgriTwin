@@ -8,9 +8,6 @@ function closeSellModal() {
   modal.style.display = "none";
 }
 
-
-// AI PRICE ESTIMATION
-
 document.getElementById("price").addEventListener("input", updatePrice);
 
 function updatePrice() {
@@ -26,9 +23,6 @@ function updatePrice() {
     `🤖 AI Suggested Price: <b>₹${min} – ₹${max}</b><br>
      Your expected price: ₹${price}`;
 }
-
-
-// CREATE LISTING
 
 function createListing(e) {
 
@@ -78,9 +72,6 @@ function createListing(e) {
     "Enter details to see AI estimate.";
 }
 
-
-// ACCEPT OFFER
-
 function acceptOffer(button) {
 
   button.parentElement.innerHTML =
@@ -89,10 +80,6 @@ function acceptOffer(button) {
     </strong>`;
 
 }
-
-
-// NEGOTIATE
-
 function negotiate() {
 
   const price = prompt(
@@ -107,9 +94,6 @@ function negotiate() {
 
   }
 }
-
-
-// CLOSE MODAL OUTSIDE CLICK
 
 window.onclick = function(e) {
 

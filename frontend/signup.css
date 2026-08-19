@@ -142,7 +142,6 @@ height:75px;
 }
 }
 
-/* --- RESPONSIVE FIX FOR SIGNUP PAGE --- */
 @media (max-width: 480px) {
     .container {
         padding: 15px;
