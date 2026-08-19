@@ -4,19 +4,15 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// MongoDB Connection
 const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/agriTwinDB";
 
 mongoose.connect(MONGO_URI)
   .then(() => console.log('✅ MongoDB Connected Successfully!'))
   .catch((err) => console.error('❌ MongoDB Connection Error:', err));
 
-// --- SCHEMAS ---
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
@@ -37,13 +33,10 @@ const serviceSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 const Service = mongoose.model('Service', serviceSchema);
 
-// --- API ENDPORTS ---
-
 app.get('/', (req, res) => {
   res.send('AgriTwin Backend is Running Successfully!');
 });
 
-// 1. SIGNUP
 app.post('/api/signup', async (req, res) => {
   try {
     const { name, email, phone, password } = req.body;
@@ -58,7 +51,6 @@ app.post('/api/signup', async (req, res) => {
   }
 });
 
-// 2. LOGIN
 app.post('/api/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -77,7 +69,6 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-// 3. SERVICE BOOKING
 app.post('/api/services', async (req, res) => {
   try {
     const { userId, userName, userEmail, serviceType, details } = req.body;
@@ -89,7 +80,6 @@ app.post('/api/services', async (req, res) => {
   }
 });
 
-// Server Start
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
